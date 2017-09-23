@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/marianapt/Project2#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.9",
     "nodemailer": "^4.1.0",
     "path": "^0.12.7",
     "sequelize": "^4.10.2"
