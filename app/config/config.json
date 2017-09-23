@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "barf",
-    "database": "database_development",
+    "database": "itsago",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
