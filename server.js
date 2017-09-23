@@ -45,6 +45,10 @@ app.get("/", function(req,res) {
     res.render("index");
 });
 
+var usercontroller = require("./app/controllers/usercontroller.js");
+
+app.use("/api/user", usercontroller);
+
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync({ force: true }).then(function() {
