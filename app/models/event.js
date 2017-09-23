@@ -5,28 +5,27 @@ module.exports = function(sequelize, DataTypes) {
 
 	var Event = sequelize.define("Event", {
 	  userId: {
-	    type: Sequelize.STRING
+	    type: DataTypes.STRING
 	  },
 	  eventName: {
-	    type: Sequelize.STRING
+	    type: DataTypes.STRING
 	  },
 	  eventAddress: {
-	    type: Sequelize.STRING
+	    type: DataTypes.STRING
 	  },
 	  eventCity: {
-	    type: Sequelize.STRING
+	    type: DataTypes.STRING
 	  },
 	  eventState: {
-	    type: Sequelize.STRING
+	    type: DataTypes.STRING
 	  },
 	  eventZip: {
-	    type: Sequelize.STRING
+	    type: DataTypes.INTEGER
 	  },
 	  eventCost: {
-	    type: Sequelize.DECIMAL
+	    type: DataTypes.DECIMAL
 	  }
-	}
-});
+	});
 
 return Event;
 
