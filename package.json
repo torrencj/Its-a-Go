@@ -1,0 +1,27 @@
+{
+  "name": "itsago",
+  "version": "1.0.0",
+  "description": "Simple event and RSVP manager.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marianapt/Project2.git"
+  },
+  "author": "John, Mariana, Will, Jayme, Jacque",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marianapt/Project2/issues"
+  },
+  "homepage": "https://github.com/marianapt/Project2#readme",
+  "dependencies": {
+    "express": "^4.15.4",
+    "express-handlebars": "^3.0.0",
+    "nodemailer": "^4.1.0",
+    "path": "^0.12.7",
+    "sequelize": "^4.10.2"
+  }
+}
