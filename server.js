@@ -45,14 +45,13 @@ app.get("/", function(req,res) {
     res.render("index");
 });
 
-<<<<<<< HEAD
+
 var eventcontroller = require("./app/controllers/eventcontroller.js")
 app.use("/api/event", eventcontroller);
-=======
+
 var usercontroller = require("./app/controllers/usercontroller.js");
 
 app.use("/api/user", usercontroller);
->>>>>>> e41503fa57b97802bda000f6f9a41b46478b400f
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
