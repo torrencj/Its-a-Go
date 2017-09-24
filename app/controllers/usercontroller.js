@@ -7,9 +7,6 @@ var db = require("../models");
 var bcrypt = require('bcrypt');
 
 const saltRounds = 10;
-const someOtherPlaintextPassword = 'not_bacon';
-
-
 
 // Add a new user.
 router.post('/new', function(req, res) {
