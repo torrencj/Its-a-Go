@@ -18,6 +18,9 @@ var User = sequelize.define("User", {
   },
   email: {
     type: DataTypes.STRING
+  },
+  hash: {
+    type: DataTypes.STRING
   }
 });
 
