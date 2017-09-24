@@ -3,7 +3,7 @@
 <h2>Here's a todo list:</h2>
 
 <ul>
-  <li>Initial file structure</li>
+  <strike><li>Initial file structure</li></strike>
   <li>
     Mockups/barebones version of each page:
     <ul>
@@ -15,43 +15,40 @@
       <li>eventview</li>
     </ul>
   </li>
-  <li>Decide on some database structure</li>
+  <strike><li>Decide on some database structure</li></strike>
 </ul>
 
+<!-- Create event placeholder -->
+<h2>Create an event:</h2>
+<hr>
 <form action="/api/event/new" method="POST">
-  <div>
     <label for="userId">User ID</label>
     <input type="text" name="userId">
-  </div>
-  <div>
+    <br>
     <label for="eventName">Event Name</label>
     <input type="text" name="eventName">
-  </div>
-  <div>
+    <br>
     <label for="eventAddress">Event Address</label>
     <input type="text" name="eventAddress">
-  </div>
-  <div>
+    <br>
     <label for="eventCity">Event City</label>
     <input type="text" name="eventCity">
-  </div>
-  <div>
+    <br>
     <label for="eventState">Event State</label>
     <input type="text" name="eventState">
-  </div>
-  <div>
+    <br>
     <label for="eventZip">Event Zip</label>
     <input type="text" name="eventZip">
-  </div>
-  <div>
+    <br>
     <label for="eventCost">Cost</label>
     <input type="text" name="eventCost">
-  </div>
-  <div>
+    <br>
     <button type="submit">Submit</button>
-  </div>
 </form>
 
+<!-- Create user placeholder -->
+<h2>Create a user:</h2>
+<hr>
 <form class="" action="/api/user/new" method="post">
   <label for="firstname"> First Name:</label>
   <input type="text" name="firstname">
@@ -61,6 +58,20 @@
   <br>
   <label for="email"> Email:</label>
   <input type="text" name="email">
+  <br>
+  <label for="pass"> Password:</label>
+  <input type="password" name="password">
   <button type="submit" name="button">Submit</button>
 </form>
 
+<!-- Login demo -->
+<h2>User login:</h2>
+<hr>
+<form class="" action="/api/user/login" method="post">
+  <label for="email"> Email:</label>
+  <input type="text" name="email">
+  <br>
+  <label for="pass"> Password:</label>
+  <input type="password" name="password">
+  <button type="submit" name="button">Submit</button>
+</form>
