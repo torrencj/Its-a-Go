@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>itsaGO</title>
+  <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../public/css/materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="../public/css/test.css">
+  <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
+<!-- NAVBAR -->
+    <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">itsaGO</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="./login.html">Login</a></li>
+          <li><a href="./dashboard.html">Event Dashboard</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="./login.html">Login</a></li>
+          <li><a href="./dashboard.html">Event Dashboard</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+      </ul>
+      </div>
+    </nav>
+  </div>
+<!-- END NAVBAR -->
+
+<div class="container"> <!-- main container -->
+  
+  <div class="row" id="main-row">
+
+      <div class="col s3"><!-- Profile picture / user info -->
+          <h5>Hi <span id= "userName"></span></h5>
+          <img class="responsive-img" id="profilePic" src="http://placehold.it/200x200" alt="profile picture">
+
+          <div class="section">
+            <ul>
+              <li>
+                <p class="flow-text">Email: <span id="userEmail"></span></p>
+              </li>
+              <li>
+                <p class="flow-text">Phone: <span id="userPhone"></span></p>
+              </li>
+              <li>
+                <p class="flow-text">Events Planned: <span id="eventList"></span></p>
+              </li>          
+            </ul>
+          </div><!-- end section -->
+      </div>
+
+    <div class="container">
+      <div class="col s6"> <!-- upcoming event info -->
+
+<!--         <div class="row"> -->
+        <h5 id="upcoming">Upcoming Event: <span id= "eventInfo"></span></h5>
+          <div class="col s6">
+            <ul>
+              <li>
+                <p class="flow-text">What: <span id="eventName"></span></p>
+              </li>
+              <li>
+                <p class="flow-text">When: <span id="eventDate"></span></p>
+              </li>
+              <li>
+                <p class="flow-text">Details: <span id="eventDetails"></span></p>
+              </li>          
+            </ul>
+          </div>
+<!--         </div> -->
+
+        <div class="col s5">
+          <img class="responsive-img" id="eventMap" src="http://placehold.it/500x500" width="100%" alt="googlemap">
+           <ul>
+              <li>
+                <p class="">Address: <span id="eventLoc"></span></p>
+              </li>
+              <li>
+                <p class="">Get Directions: <span id="googleDirections"></span></p>
+              </li>         
+            </ul>
+        </div>
+
+        <div class="row">
+          <div class="col s12">
+            <p class="Who's attending">Guests</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12" id="guestPreview">
+            <img class="responsive-img" id="profilePic" src="http://placehold.it/50x50" alt="profile picture">
+            <img class="responsive-img" id="profilePic" src="http://placehold.it/50x50" alt="profile picture">
+            <img class="responsive-img" id="profilePic" src="http://placehold.it/50x50" alt="profile picture">
+            <img class="responsive-img" id="profilePic" src="http://placehold.it/50x50" alt="profile picture">
+            <img class="responsive-img" id="profilePic" src="http://placehold.it/50x50" alt="profile picture">
+            <img class="responsive-img" id="profilePic" src="http://placehold.it/50x50" alt="profile picture">
+          </div>
+        </div>
+
+      </div> <!-- end upcoming event info -->
+    </div>
+
+      <div class="col s3">
+        <h5>Calendar<span id= "calendar"></span></h5>
+        <div class="collection">
+          <a href="#" class="collection-item">event 1</a>
+          <a href="#" class="collection-item">event 2</a>
+          <a href="#" class="collection-item">event 3</a>
+          <a href="#" class="collection-item">event 4</a>
+        </div>
+      </div>
+
+  </div>  <!-- END OF ROW -->
+</div> <!-- end main container -->
+
+<footer class="page-footer">
+  <div class="container">
+  © 2017 itsaGO, All rights reserved.
+  <a class="grey-text text-lighten-4 right" href="https://github.com/marianapt/Project2"></a>
+  </div>
+</footer>
+
+<!-- jQuery --> 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Materialize javascript -->
+    <script type="text/javascript" src="../public/css/materialize/js/materialize.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        // button collapse for mobile responsive navbar
+        $(".button-collapse").sideNav();
+      })
+    </script>
+  </body>
+</html> 

@@ -13,7 +13,7 @@ var path = require("path");
 // Set up the Express App
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 8081;
 
 // Requiring our models for syncing
 var db = require("./app/models");
@@ -30,7 +30,7 @@ app.use(methodOverride("_method"));
 // Static directory
 app.use(express.static("app/public"));
 
-// Set Handlebars.
+// Set Handlebars
 var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ 
@@ -44,17 +44,11 @@ app.set('views', __dirname + '/app/views');
 //TODO: Routes should only go in the controllers, I think? I'm not really clear on where the index
 //      route should go.
 // =============================================================
-app.get("/", function(req,res) {
-    res.render("index");
-});
-
-app.get("/dashboard", function(req,res) {
-    res.render("dashboard");
-});
+var htmlcontroller = require("./app/controllers/htmlcontroller.js");
+app.use("/", htmlcontroller);
 
 var eventcontroller = require("./app/controllers/eventcontroller.js");
 app.use("/api/event", eventcontroller);
-// app.use("/events", eventcontroller);
 
 var usercontroller = require("./app/controllers/usercontroller.js");
 app.use("/api/user", usercontroller);
