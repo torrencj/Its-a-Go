@@ -7,6 +7,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
+var path = require("path");
 // var handlebars = require("express-handlebars");
 
 // Set up the Express App
@@ -26,17 +27,8 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // Set up method overriding
 app.use(methodOverride("_method"));
 
-// Set up handlebars
-// app.engine("handlebars", handlebars({
-//   defaultLayout: "main",
-//   layoutsDir: "app/views/layouts/"  //We need this because server.js is one folder up from views
-// }));
-// app.set("view engine", "handlebars");
-// app.set('views', __dirname + '/app/views'); //We need this because server.js is one folder up from views
-
 // Static directory
-app.use(express.static("public"));
-
+app.use(express.static("app/public"));
 
 // Set Handlebars.
 var exphbs = require("express-handlebars");

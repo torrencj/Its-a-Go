@@ -1,53 +1,86 @@
-    <!-- Page Layout here -->
-    <div class="row">
+<div class="container"> <!-- main container -->
+  
+  <div class="row" id="main-row">
 
-      <div class="col s12 m4 l3"> <!-- Note that "m4 l3" was added -->
-        <!-- Grey navigation panel
+      <div class="col s3"><!-- Profile picture / user info -->
+          <h5>Hi <span id= "userName"></span></h5>
+          <img class="responsive-img" id="profilePic" src="http://placehold.it/200x200" alt="profile picture">
 
-              This content will be:
-          3-columns-wide on large screens,
-          4-columns-wide on medium screens,
-          12-columns-wide on small screens  -->
-
-     <h1 id="eventDetails">
-     </h1>   
-
-
-      <ul>
-        {{#each events}}
-          <li>
-            <h2>{{this.eventName}}</h2>
-              <ul>
-                <li>
-                  <h3>{{this.eventAddress}}</h3>
-                </li>
-                <li>
-                  <h3>{{this.eventCity}}</h3>
-                </li>
-                <li>
-                  <h3>{{this.eventState}}</h3>
-                </li>
-                <li>
-                  <h3>{{this.eventZip}}</h3>
-                </li>
-                <li>
-                  <h3>{{this.eventCost}}</h3>
-                </li>
-              </ul>
-          </li>
-        {{/each}}
-      </ul>
-
+          <div class="section">
+            <ul>
+              <li>
+                <p class="flow-text">Email: <span id="userEmail"></span></p>
+              </li>
+              <li>
+                <p class="flow-text">Phone: <span id="userPhone"></span></p>
+              </li>
+              <li>
+                <p class="flow-text">Events Planned: <span id="eventList"></span></p>
+              </li>          
+            </ul>
+          </div><!-- end section -->
       </div>
 
-      <div class="col s12 m8 l9"> <!-- Note that "m8 l9" was added -->
-        <!-- Teal page content
+    <div class="container">
+      <div class="col s6"> <!-- upcoming event info -->
 
-              This content will be:
-          9-columns-wide on large screens,
-          8-columns-wide on medium screens,
-          12-columns-wide on small screens  -->
+<!--         <div class="row"> -->
+        <h5 id="upcoming">Upcoming Event: <span id= "eventInfo"></span></h5>
+          <div class="col s6">
+            <ul>
+              <li>
+                <p class="flow-text">What: <span id="eventName"></span></p>
+              </li>
+              <li>
+                <p class="flow-text">When: <span id="eventDate"></span></p>
+              </li>
+              <li>
+                <p class="flow-text">Details: <span id="eventDetails"></span></p>
+              </li>          
+            </ul>
+          </div>
+<!--         </div> -->
 
-      </div>
+        <div class="col s5">
+          <img class="responsive-img" id="eventMap" src="http://placehold.it/500x500" width="100%" alt="googlemap">
+           <ul>
+              <li>
+                <p class="">Address: <span id="eventLoc"></span></p>
+              </li>
+              <li>
+                <p class="">Get Directions: <span id="googleDirections"></span></p>
+              </li>         
+            </ul>
+        </div>
 
+        <div class="row">
+          <div class="col s12">
+            <p class="Who's attending">Guests</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12" id="guestPreview">
+            <img class="responsive-img" id="profilePic" src="http://placehold.it/50x50" alt="profile picture">
+            <img class="responsive-img" id="profilePic" src="http://placehold.it/50x50" alt="profile picture">
+            <img class="responsive-img" id="profilePic" src="http://placehold.it/50x50" alt="profile picture">
+            <img class="responsive-img" id="profilePic" src="http://placehold.it/50x50" alt="profile picture">
+            <img class="responsive-img" id="profilePic" src="http://placehold.it/50x50" alt="profile picture">
+            <img class="responsive-img" id="profilePic" src="http://placehold.it/50x50" alt="profile picture">
+          </div>
+        </div>
+
+      </div> <!-- end upcoming event info -->
     </div>
+
+      <div class="col s3">
+        <h5>Calendar<span id= "calendar"></span></h5>
+        <div class="collection">
+          <a href="#" class="collection-item">event 1</a>
+          <a href="#" class="collection-item">event 2</a>
+          <a href="#" class="collection-item">event 3</a>
+          <a href="#" class="collection-item">event 4</a>
+        </div>
+      </div>
+
+  </div>  <!-- END OF ROW -->
+</div> <!-- end main container -->
