@@ -33,9 +33,9 @@ app.use(express.static("app/public"));
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 
-app.engine("handlebars", exphbs({ 
-	defaultLayout: "main", 
-	layoutsDir: "app/views/layouts/" 
+app.engine("handlebars", exphbs({
+	defaultLayout: "main",
+	layoutsDir: "app/views/layouts/"
 }));
 app.set("view engine", "handlebars");
 app.set('views', __dirname + '/app/views');
@@ -68,5 +68,3 @@ db.sequelize.sync({ force: true }).then(function() {
     console.log("App listening on PORT " + PORT);
   });
 });
-
-

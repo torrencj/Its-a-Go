@@ -17,12 +17,14 @@ router.get("/dashboard", function(req, res) {
   });
 
 router.get("/all", function(req, res) {
-  db.Event.findAll({}).then(function(results) {
+  db.Event.findAll({
+    include: [ db.User ]
+  }).then(function(results) {
       // results are available to us inside the .then
     res.json(results);
     });
     // console.log(results);
-    res.render("index", results);
+    // res.render("index", results);
   });
 
 // router.get("/", function(req, res) {
@@ -50,4 +52,3 @@ router.post('/new', function(req, res) {
 // })
 
 module.exports = router;
-
