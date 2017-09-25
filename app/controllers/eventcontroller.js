@@ -4,9 +4,19 @@
 var express = require('express');
 var router = express.Router();
 var db = require("../models");
+// sequelize.import("./models/event.js");
 
+router.get("/dashboard", function(req, res) {
+  db.Event.findAll({}).then(function(results) {
+    var hbsObject = {
+      events: results
+    };
+    console.log(hbsObject);
+    res.render("dashboard", hbsObject);
+    });
+  });
 
-router.get("/events", function(req, res) {
+router.get("/all", function(req, res) {
   db.Event.findAll({}).then(function(results) {
       // results are available to us inside the .then
     res.json(results);
@@ -14,14 +24,13 @@ router.get("/events", function(req, res) {
     // console.log(results);
     res.render("index", results);
   });
-};
 
 // router.get("/", function(req, res) {
 //   db.Event.all(function(data) {
 //     var hbsObject = {
 //       events: data
 //     };
-//     console.log(hbsObject);
+//     console.log(hbsOb  ject);
 //     res.render("index", hbsObject);
 //   });
 // });

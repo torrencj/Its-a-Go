@@ -9,17 +9,31 @@
           4-columns-wide on medium screens,
           12-columns-wide on small screens  -->
 
+     <h1 id="eventDetails">
+     </h1>   
+
+
       <ul>
         {{#each events}}
           <li>
-            {{this.name}}
-
-            <form action="/{{this.id}}?_method=PUT" method="POST">
-              <input type="hidden" name="sleepy" value="true">
-              <button type="submit">SLEEP TIME!</button>
-            </form>
-
-            {{> events/delete-cat}}
+            <h2>{{this.eventName}}</h2>
+              <ul>
+                <li>
+                  <h3>{{this.eventAddress}}</h3>
+                </li>
+                <li>
+                  <h3>{{this.eventCity}}</h3>
+                </li>
+                <li>
+                  <h3>{{this.eventState}}</h3>
+                </li>
+                <li>
+                  <h3>{{this.eventZip}}</h3>
+                </li>
+                <li>
+                  <h3>{{this.eventCost}}</h3>
+                </li>
+              </ul>
           </li>
         {{/each}}
       </ul>
