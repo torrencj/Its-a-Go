@@ -28,7 +28,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(methodOverride("_method"));
 
 // Static directory
-app.use(express.static("app/public"));
+app.use(express.static(path.join(__dirname, "app/public")));
 
 // Set Handlebars
 var exphbs = require("express-handlebars");
@@ -53,7 +53,6 @@ app.use("/api/event", eventcontroller);
 var usercontroller = require("./app/controllers/usercontroller.js");
 app.use("/api/user", usercontroller);
 
-
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 
@@ -62,5 +61,3 @@ db.sequelize.sync({ force: true }).then(function() {
     console.log("App listening on PORT " + PORT);
   });
 });
-
-

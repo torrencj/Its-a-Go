@@ -1,13 +1,23 @@
 var express = require('express');
-var router = express.Router();
-var db = require("../models");
+var router  = express.Router();
+var path    = require('path');
+var fs      = require('fs');
+var db 	    = require("../models");
 
-app.get("/", function(req,res) {
+router.get("/", function(req,res) {
     res.render("splash");
 });
 
-app.get("/", function(req,res) {
-    res.render("index");
+router.get("/login", function(req,res) {
+    res.render("login");
+});
+
+router.get("/signup", function(req,res) {
+    res.render("signup");
+});
+
+router.get("/create", function(req,res) {
+    res.render("create");
 });
 
 router.get("/dashboard", function(req, res) {
@@ -20,6 +30,20 @@ router.get("/dashboard", function(req, res) {
     });
 });
 
-app.get("/create", function(req,res) {
-    res.render("create");
+router.get("/about", function(req,res) {
+    res.render("about");
 });
+
+
+
+// router.get("/all", function(req, res) {
+//   db.Event.findAll({}).then(function(results) {
+//       // results are available to us inside the .then
+//     res.json(results);
+//     });
+//     // console.log(results);
+//     res.render("index", results);
+//   });
+
+
+module.exports = router;
