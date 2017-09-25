@@ -55,7 +55,8 @@ app.use("/api/user", usercontroller);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+//REMINDER: change this to ...sync({ force: true }) to dump the DB tables each time.
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

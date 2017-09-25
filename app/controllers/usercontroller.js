@@ -1,10 +1,10 @@
-//Example usercontroller.
-//TODO: Set up user routes
-
-var express = require('express');
-var router = express.Router();
-var db = require("../models");
-var bcrypt = require('bcrypt');
+var fs        = require('fs');
+var express   = require('express');
+var router    = express.Router();
+var path      = require('path')
+var db        = require("../models");
+var bcrypt    = require('bcrypt');
+var jwt       = require('jsonwebtoken');
 
 const saltRounds = 10;
 
@@ -23,7 +23,6 @@ router.post('/new', function(req, res) {
 
 // User login
 router.post('/login', function(req, res) {
-  console.log(req.params);
   console.log(req.body);
   // Load hash from your password DB.
   db.User.findOne({
@@ -39,7 +38,16 @@ router.post('/login', function(req, res) {
         console.log(response);
         if (response) {
           //User is logeed in, send a JWT and we can go from here.
-          res.send(`Welcome ${userRecord.firstname}! You are successfully logged in.`)
+          //TODO Make sure this is an appropriate use of filesync.
+          //TODO Is this an appropriate use of a private key? Should we use a string like "secret"?
+          //TODO Set heroku environment variable config to keep our secret safe.
+          var cert = fs.readFileSync(path.join(__dirname, '../../private.pem'));  // get private key
+
+          jwt.sign({ foo: 'bar' }, cert, function(err, token) {
+            console.log(token);
+            res.set("authorization", token); // Set response header to the access token. //TODO: save this in local storage
+            res.send(`Welcome ${userRecord.firstname}! You are successfully logged in.`)
+          });
         } else {
           //Wrong password.
           res.send(`Wrong password! Try again.`)
