@@ -13,7 +13,7 @@ var path = require("path");
 // Set up the Express App
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 8000;
+var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
 var db = require("./app/models");
@@ -62,14 +62,11 @@ app.use("/api/user", usercontroller);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-// db.sequelize.sync({ force: true }).then(function() {
-//   app.listen(PORT, function() {
-//     console.log("App listening on PORT " + PORT);
-//   });
-// });
 
-db.sequelize.sync({ force: false }).then(function() {
+db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
 });
+
+
