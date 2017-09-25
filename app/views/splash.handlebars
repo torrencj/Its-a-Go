@@ -1,3 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="handlebars-v4.0.2.js"></script>
+</head>
+
+
+
+{{body}}
+
+
+{{!-- <body>
+  <div id="eventData"></div>
+  <script type="text/javascript">
+  var myInfo = "<p> Green means go:  {{event}} and {{people}} dont forget about finances! {{cost}} </p>";
+  var template= Handlebars.compile(myInfo);
+  var data = template({event: "something", people: " ["mark", " angie"]", cost: " " });
+   document.getElementById("eventData").innerHTML += data;
+  
+  </script> --}}
+
+  {{!--   other option for handlebar --}}
+
+  {{!-- <div id="eventData"></div>
+  <script type= text/x-handebars-template"> 
+  <h3> Where to next: {{event}} lets go! 
+    <ol> etc...
+      
+      {{#each events}}
+      
+      <li>{{event}}{{/each}}</ol> </script>
+      <script type="text/javascript">
+      var eventInfo = document.getElementById("eventData").innerHTML;
+      var template= Handlebars.compile(eventInfo);
+      var eventData
+      </script>--}}
+</body>
+</html>
+
+{{!-- 
 <h1>Hello world!</h1>
 
 <h2>Here's a todo list:</h2>
@@ -74,4 +118,4 @@
   <label for="pass"> Password:</label>
   <input type="password" name="password">
   <button type="submit" name="button">Submit</button>
-</form>
+</form> --}}

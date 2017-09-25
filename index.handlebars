@@ -1,0 +1,49 @@
+<h1>Hello world!</h1>
+
+<h2>Here's a todo list:</h2>
+
+<ul>
+  <li>Initial file structure</li>
+  <li>
+    Mockups/barebones version of each page:
+    <ul>
+      <li>splash</li>
+      <li>login</li>
+      <li>usercreate</li>
+      <li>userview</li>
+      <li>eventcreate</li>
+      <li>eventview</li>
+    </ul>
+  </li>
+  <li>Decide on some database structure</li>
+</ul>
+
+<form action="/api/event/new" method="POST">
+  <div>
+    <label for="userId">User ID</label>
+    <input type="text" name="userId">
+  </div>
+  <div>
+    <label for="eventName">Event Name</label>
+    <input type="text" name="eventName">
+  </div>
+  <div>
+    <label for="eventAddress">Event Address</label>
+    <input type="text" name="eventAddress">
+  </div>
+  <div>
+    <label for="eventCity">Event City</label>
+    <input type="text" name="eventCity">
+  </div>
+  <div>
+    <label for="eventState">Event State</label>
+    <input type="text" name="eventState">
+  </div>
+  <div>
+    <label for="eventCost">Cost</label>
+    <input type="text" name="eventCost">
+  </div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>
