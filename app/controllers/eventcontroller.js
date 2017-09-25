@@ -4,7 +4,36 @@
 var express = require('express');
 var router = express.Router();
 var db = require("../models");
+// sequelize.import("./models/event.js");
 
+router.get("/dashboard", function(req, res) {
+  db.Event.findAll({}).then(function(results) {
+    var hbsObject = {
+      events: results
+    };
+    console.log(hbsObject);
+    res.render("dashboard", hbsObject);
+    });
+  });
+
+router.get("/all", function(req, res) {
+  db.Event.findAll({}).then(function(results) {
+      // results are available to us inside the .then
+    res.json(results);
+    });
+    // console.log(results);
+    res.render("index", results);
+  });
+
+// router.get("/", function(req, res) {
+//   db.Event.all(function(data) {
+//     var hbsObject = {
+//       events: data
+//     };
+//     console.log(hbsOb  ject);
+//     res.render("index", hbsObject);
+//   });
+// });
 
 router.post('/new', function(req, res) {
   console.log(req.body);
@@ -19,8 +48,6 @@ router.post('/new', function(req, res) {
 //     res.send(data)
 //   })
 // })
-
-
 
 module.exports = router;
 
