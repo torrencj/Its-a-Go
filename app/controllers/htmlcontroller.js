@@ -8,6 +8,10 @@ router.get("/", function(req,res) {
     res.render("splash");
 });
 
+router.get("/splash", function(req,res) {
+    res.render("splash");
+});
+
 router.get("/login", function(req,res) {
     res.render("login");
 });
