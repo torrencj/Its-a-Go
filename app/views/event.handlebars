@@ -3,32 +3,18 @@
   <div class="row" id="main-row">
 
       <div class="col s3"><!-- Profile picture / user info -->
-          <h5>Hi {{this.firstname}}</h5>
-          <script src="https://www.avatarapi.com/js.aspx?email={{this.email}}&size=200">
-          </script>
-
-          <div style="height:0px;overflow:hidden">
-            <input type="file" id="fileInput" name="fileInput" />
-          </div>
-          
-          <button type="button" onclick="chooseFile();">upload a new photo</button>
-
-          <script>
-          function chooseFile() {
-          $("#fileInput").click();
-          }
-          </script>
+          <h5>{{this.eventname}}</h5>
 
           <div class="section">
             <ul>
               <li>
-                <p class="flow-text">Email: <span id="userEmail"></span></p>
+                <p class="">Address: {{this.address}} </p>
               </li>
               <li>
-                <p class="flow-text">Phone: <span id="userPhone"></span></p>
+                <p class="">Date: {{this.date}}</p>
               </li>
               <li>
-                <p class="flow-text">Events Planned: <span id="eventList"></span></p>
+                <p class="">Details: {{this.details}}</p>
               </li>          
             </ul>
           </div><!-- end section -->
@@ -36,19 +22,14 @@
 
     <div class="container">
       <div class="col s6"> <!-- upcoming event info -->
-
-<!--         <div class="row"> -->
-        <h5 id="upcoming">Upcoming Event: <span id= "eventInfo"></span></h5>
-          <div class="col s6">
+        <h5 id="upcoming">Map: <span id= "eventInfo"></span></h5>
+        <img src="placehold.it/200x200" alt="googlemap">
             <ul>
               <li>
                 <p class="flow-text">What: <span id="eventName"></span></p>
               </li>
               <li>
                 <p class="flow-text">When: <span id="eventDate"></span></p>
-              </li>
-              <li>
-                <p class="flow-text">Details: <span id="eventDetails"></span></p>
               </li>          
             </ul>
           </div>
@@ -96,4 +77,4 @@
       </div>
 
   </div>  <!-- END OF ROW -->
-</div> <!-- end main container -->
+</div>
