@@ -1,20 +1,9 @@
 //Example eventcontroller.
 //TODO: Set up event routes
-
 var express = require('express');
 var router = express.Router();
 var db = require("../models");
 // sequelize.import("./models/event.js");
-
-router.get("/dashboard", function(req, res) {
-  db.Event.findAll({}).then(function(results) {
-    var hbsObject = {
-      events: results
-    };
-    console.log(hbsObject);
-    res.render("dashboard", hbsObject);
-    });
-  });
 
 router.get("/all", function(req, res) {
   db.Event.findAll({
