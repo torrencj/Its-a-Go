@@ -1,3 +1,4 @@
+//ajax call to get user email photo.
 function CallInstantApi() {
     $.get("ajax/instant.aspx?email=" + $("#tbInstant").val(),
         function (data) {
