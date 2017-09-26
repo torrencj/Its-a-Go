@@ -51,4 +51,31 @@ router.post('/new', function(req, res) {
 //   })
 // })
 
+  // DELETE route for deleting events
+  router.delete("/delete/:id", function(req, res) {
+    db.Event.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(function(result) {
+      res.json(result);
+    });
+  });
+
+
+  // PUT route for updating events
+  router.put("/update", function(req, res) {
+    db.Event.update(req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+    .then(function(results) {
+      res.json(results);
+    });
+  });
+
+
 module.exports = router;

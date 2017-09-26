@@ -57,4 +57,19 @@ router.post('/login', function(req, res) {
   });
 });
 
+  // PUT route for updating users
+  router.put("/update", function(req, res) {
+    db.User.update(req.body,
+      {
+        where: {
+          uuid: req.body.uuid
+        }
+      })
+    .then(function(results) {
+      res.json(results);
+    });
+  });
+
+
+
 module.exports = router;
