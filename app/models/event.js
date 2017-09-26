@@ -10,6 +10,9 @@ module.exports = function(sequelize, DataTypes) {
 	  eventName: {
 	    type: DataTypes.STRING
 	  },
+	  eventDate: {
+	    type: DataTypes.STRING
+	  },
 	  eventAddress: {
 	    type: DataTypes.STRING
 	  },
@@ -24,6 +27,9 @@ module.exports = function(sequelize, DataTypes) {
 	  },
 	  eventCost: {
 	    type: DataTypes.DECIMAL
+	  },
+	  eventMinimum: {
+	    type: DataTypes.INTEGER
 	  }
 	});
 

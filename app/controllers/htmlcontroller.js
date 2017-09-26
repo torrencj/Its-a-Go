@@ -4,11 +4,21 @@ var path    = require('path');
 var fs      = require('fs');
 var db 	    = require("../models");
 
-router.get("/", function(req,res) {
-    res.render("splash");
-});
+var testUser = {
+"uuid": "14d32eb0-a2ee-11e7-b847-ef41a58002ce",
+"firstname": "Jacqueline",
+"lastname": "White",
+"email": "jacquecwhite@gmail.com",
+"hash": "$2a$10$PCRSu3mwCf8ePykiy8ICRO7SeRJN3QWauDG9dPMKCyoApE101kDwC",
+"updatedAt": "2017-09-26T19:08:29.341Z",
+"createdAt": "2017-09-26T19:08:29.341Z"
+}
 
-router.get("/splash", function(req,res) {
+var testObj = {
+
+}
+
+router.get("/", function(req,res) {
     res.render("splash");
 });
 
@@ -24,13 +34,25 @@ router.get("/create", function(req,res) {
     res.render("create");
 });
 
+router.get("/event", function(req,res) {
+    res.render("event");
+});
+
 router.get("/dashboard", function(req, res) {
-  db.Event.findAll({}).then(function(results) {
-    var hbsObject = {
-      events: results
-    };
-    console.log(hbsObject);
-    res.render("dashboard", hbsObject);
+//TODO set req.user appropriately 
+//TODO check is req.user exists 
+//TODO validate req.user/ validate JWT
+  db.User.findAll({ 
+  	where: {
+  		UserUuid: req.user 
+  	} 
+  	  }).then(function(results) {
+    // var hbsObject = {
+    //   : results
+    // };
+    // console.log(hbsObject);
+    // res.render("dashboard", results);
+    res.render("dashboard", testObj);
     });
 });
 
