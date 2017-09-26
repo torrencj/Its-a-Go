@@ -45,7 +45,7 @@ app.set('views', __dirname + '/app/views');
 //      route should go.
 // =============================================================
 app.get("/", function(req,res) {
-    res.render("index");
+    res.render("login");
 });
 
 app.get("/dashboard", function(req,res) {
