@@ -13,7 +13,7 @@ var path = require("path");
 // Set up the Express App
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 8081;
+var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
 var db = require("./app/models");
