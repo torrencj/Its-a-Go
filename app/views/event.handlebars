@@ -1,80 +1,35 @@
 <div class="container"> <!-- main container -->
   
-  <div class="row" id="main-row">
+<h5>Event Name: {{this.eventname}}</h5>
+<p class="">Address: {{this.address}} </p>
+<p class="">Date: {{this.date}}</p>
+<p class="">Details: {{this.details}}</p>
 
-      <div class="col s3"><!-- Profile picture / user info -->
-          <h5>{{this.eventname}}</h5>
+<form>
+  Guest Name:<br>
+  <input type="text" name="guestName"><br>
+  Guest Email:<br>
+  <input type="text" name="guestEmail">
+  <button type="submit">Send Emails</button>
+</form>
 
-          <div class="section">
-            <ul>
-              <li>
-                <p class="">Address: {{this.address}} </p>
-              </li>
-              <li>
-                <p class="">Date: {{this.date}}</p>
-              </li>
-              <li>
-                <p class="">Details: {{this.details}}</p>
-              </li>          
-            </ul>
-          </div><!-- end section -->
-      </div>
+<form>
+  Guest Name:<br>
+  <input type="text" name="guestName"><br>
+  Guest Email:<br>
+  <input type="text" name="guestEmail">
+  <button type="submit">Send Emails</button>
+</form>
 
-    <div class="container">
-      <div class="col s6"> <!-- upcoming event info -->
-        <h5 id="upcoming">Map: <span id= "eventInfo"></span></h5>
-        <img src="placehold.it/200x200" alt="googlemap">
-            <ul>
-              <li>
-                <p class="flow-text">What: <span id="eventName"></span></p>
-              </li>
-              <li>
-                <p class="flow-text">When: <span id="eventDate"></span></p>
-              </li>          
-            </ul>
-          </div>
-<!--         </div> -->
+<form>
+  Emails of Guests:<br>
+  <input type="text" name="firstname"><br>
+  <button type="submit">Send Emails</button>
+</form>
 
-        <div class="col s5">
-          <img class="responsive-img" id="eventMap" src="http://placehold.it/500x500" width="100%" alt="googlemap">
-           <ul>
-              <li>
-                <p class="">Address: <span id="eventLoc"></span></p>
-              </li>
-              <li>
-                <p class="">Get Directions: <span id="googleDirections"></span></p>
-              </li>         
-            </ul>
-        </div>
+<h5 id="upcoming">Map: </span></h5>
+<img src="placehold.it/200x200" alt="googlemap">
+<p class="flow-text">What: </p>
+<p class="flow-text">When: </p>
 
-        <div class="row">
-          <div class="col s12">
-            <p class="Who's attending">Guests</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col s12" id="guestPreview">
-            <img class="responsive-img" id="profilePic" src="http://placehold.it/50x50" alt="profile picture">
-            <img class="responsive-img" id="profilePic" src="http://placehold.it/50x50" alt="profile picture">
-            <img class="responsive-img" id="profilePic" src="http://placehold.it/50x50" alt="profile picture">
-            <img class="responsive-img" id="profilePic" src="http://placehold.it/50x50" alt="profile picture">
-            <img class="responsive-img" id="profilePic" src="http://placehold.it/50x50" alt="profile picture">
-            <img class="responsive-img" id="profilePic" src="http://placehold.it/50x50" alt="profile picture">
-          </div>
-        </div>
-
-      </div> <!-- end upcoming event info -->
-    </div>
-
-      <div class="col s3">
-        <h5>Calendar<span id= "calendar"></span></h5>
-        <div class="collection">
-          <a href="#" class="collection-item">event 1</a>
-          <a href="#" class="collection-item">event 2</a>
-          <a href="#" class="collection-item">event 3</a>
-          <a href="#" class="collection-item">event 4</a>
-        </div>
-      </div>
-
-  </div>  <!-- END OF ROW -->
 </div>
