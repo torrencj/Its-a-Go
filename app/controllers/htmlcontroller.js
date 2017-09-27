@@ -8,20 +8,6 @@ var cookieParser = require('cookie-parser');
 
 var secret = fs.readFileSync(path.join(__dirname, '../../private.pem'));
 
-var testUser = {
-"uuid": "14d32eb0-a2ee-11e7-b847-ef41a58002ce",
-"firstname": "Jacqueline",
-"lastname": "White",
-"email": "jacquecwhite@gmail.com",
-"hash": "$2a$10$PCRSu3mwCf8ePykiy8ICRO7SeRJN3QWauDG9dPMKCyoApE101kDwC",
-"updatedAt": "2017-09-26T19:08:29.341Z",
-"createdAt": "2017-09-26T19:08:29.341Z"
-}
-
-var testObj = {
-
-}
-
 router.get("/", function(req,res) {
     res.render("splash");
 });
@@ -82,6 +68,10 @@ router.get("/dashboard", function(req, res) {
 router.get("/about", function(req,res) {
     res.render("about");
 });
+
+router.get("/maptest", function (req, res) {
+  res.render("maptest")
+})
 
 
 
