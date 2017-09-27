@@ -69,8 +69,8 @@ router.get("/about", function(req,res) {
     res.render("about");
 });
 
-router.get("/maptest", function (req, res) {
-  res.render("maptest")
+router.get("/stripetest", function (req, res) {
+  res.render("stripetest")
 })
 
 
