@@ -7,6 +7,23 @@ html {
 
 }
 
+/*ABOUT STYLES*/
+.team{
+    text-align: center;
+    background-color: #ffae19;
+    padding: 5px ;
+}
+
+.banana {
+    font-family: 'Marcellus SC', serif;;
+}
+
+
+
+/*END OF ABOUT STYLES*/
+
+
+
 .nav-wrapper {
     font-family: 'Bevan', cursive;
     background-color: #216F46;
