@@ -4,11 +4,18 @@
 // ******************************************************************************
 // *** Dependencies
 // =============================================================
+var fs = require('fs');
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 var path = require("path");
-// var handlebars = require("express-handlebars");
+var cookieParser = require('cookie-parser');
+// var jwtexpress = require('jwt-express');
+
+
+//read our cert file for use later
+var cert = fs.readFileSync(path.join(__dirname, 'private.pem'));  // get private key
+
 
 // Set up the Express App
 // =============================================================
@@ -23,6 +30,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
+// Parse cookies
+app.use(cookieParser())
+
+// Init jsonwebtoken middleware
+// app.use(jwtexpress.init('cert'));
 
 // Set up method overriding
 app.use(methodOverride("_method"));
@@ -56,7 +69,7 @@ app.use("/api/user", usercontroller);
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
