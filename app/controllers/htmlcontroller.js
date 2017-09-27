@@ -43,7 +43,17 @@ router.get("/signup", function(req,res) {
 });
 
 router.get("/create", function(req,res) {
-    res.render("create");
+  if (req.cookies.cookiename) {
+    jwt.verify(req.cookies.cookiename.token, secret, function(err, decoded) {
+      console.log("Info stored in token:");
+      console.log(decoded);
+
+      res.render("create", decoded);
+
+    });
+  } else { // They aren't signed in.
+    res.redirect("/")
+  }
 });
 
 router.get("/event", function(req,res) {
@@ -60,7 +70,8 @@ router.get("/dashboard", function(req, res) {
         	uuid: decoded.user
       }
         }).then(function(results) {
-      res.render("dashboard", results);
+      // res.render("dashboard", results);
+      res.send(results)
       });
     });
   } else { // They aren't signed in.

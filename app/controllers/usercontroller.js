@@ -5,8 +5,9 @@ var path       = require('path')
 var db         = require("../models");
 var bcrypt     = require('bcrypt');
 var jwt        = require('jsonwebtoken');
-
 var nodemailer = require('nodemailer');
+
+// var pw = fs.createReadStream(path.join(__dirname, '../emailtemplates/welcome.html'));
 
 var transporter = nodemailer.createTransport({
  service: 'gmail',
