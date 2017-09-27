@@ -17,28 +17,20 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-var mailList = [
-  // 'torrencj@gmail.com',
-  // 'jamiewithaY@gmail.com',
-  // 'jacquecwhite@gmail.com',
-  // 'will.wms@gmail.com'
-  ];
-
-var htmlstream = fs.createReadStream(path.join(__dirname, '../emailtemplates/welcome.html'));
-
-var mailOptions = {
-  from: 'itsagoinfo@gmail.com', // sender address
-  to: mailList,                 // list of receivers
-  subject: 'This is a test',    // Subject line
-  // html: '<p>Hi john, this is a message from node.</p>'// plain text body
-  html: htmlstream              //File stream body....
-};
-
 
 const saltRounds = 10;
 
 // Add a new user.
 router.post('/new', function(req, res) {
+  var welcomeEmail = fs.createReadStream(path.join(__dirname, '../emailtemplates/welcome.html'));
+
+  var mailOptions = {
+    from: 'itsagoinfo@gmail.com', // sender address
+    to: req.body.email,           // user email
+    subject: 'This is a test',    // Subject line
+    html: welcomeEmail              //File stream body....
+  };
+
   console.log(req.body);
   bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
     console.log(hash);
@@ -51,8 +43,8 @@ router.post('/new', function(req, res) {
          else
            console.log(info);
       });
-
-      res.send(data);
+      // res.send(data);
+      res.redirect("/dashboard"); // Shouldn't this go to /api/user/dashboard????
     });
   });
 });
@@ -61,9 +53,8 @@ router.post('/new', function(req, res) {
 // User login
 router.post('/login', function(req, res) {
   console.log(req.cookies)
-
   console.log(req.body);
-  // Load hash from your password DB.
+  // Find the user in the DB
   db.User.findOne({
     where: {
       email: req.body.email
@@ -76,17 +67,9 @@ router.post('/login', function(req, res) {
         if (err) throw err;
         console.log(response);
         if (response) {
-          //User is logeed in, send a JWT and we can go from here.
           //TODO Make sure this is an appropriate use of filesync.
-          //TODO Is this an appropriate use of a private key? Should we use a string like "secret"?
           //TODO Set heroku environment variable config to keep our secret safe.
           var cert = fs.readFileSync(path.join(__dirname, '../../private.pem'));  // get private key
-
-          // var jwt = res.jwt({
-          //   user: userRecord.UserUuid,
-          //   auth: 'true'
-          //  });
-          //  console.log(jwt);
           console.log(userRecord.uuid);
 
           jwt.sign({
@@ -96,15 +79,12 @@ router.post('/login', function(req, res) {
             console.log(token);
             let options = {
               token: token,
-              maxAge: 1000 * 60 * 60, // would expire after 1 hour
+              maxAge: 1000 * 60 * 15, // would expire after 1 hour
               httpOnly: true, // The cookie only accessible by the web server
               signed: true // Indicates if the cookie should be signed
           }
-            res.cookie('cookiename', options) //TODO Setting a cookie....
-            // res.set("authorization", token); // Set response header to the access token. //TODO: save this in local storage
-            // res.end();
+            res.cookie('cookiename', options)
             res.redirect("/dashboard");
-            // res.send(`Welcome ${userRecord.firstname}! You are successfully logged in.`)
           });
         } else {
           //Wrong password.
