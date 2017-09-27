@@ -1,8 +1,13 @@
-var express = require('express');
-var router  = express.Router();
-var path    = require('path');
-var fs      = require('fs');
-var db 	    = require("../models");
+var express    = require('express');
+var router     = express.Router();
+var path       = require('path');
+var fs         = require('fs');
+var db 	       = require("../models");
+var jwt        = require('jsonwebtoken');
+var jwtexpress = require('jwt-express');
+var cookieParser = require('cookie-parser');
+
+var secret = fs.readFileSync(path.join(__dirname, '../../private.pem'));
 
 var testUser = {
 "uuid": "14d32eb0-a2ee-11e7-b847-ef41a58002ce",
@@ -19,6 +24,7 @@ var testObj = {
 }
 
 router.get("/", function(req,res) {
+  console.log('Token: ', req.cookies.cookiename.token)
     res.render("splash");
 });
 
@@ -39,20 +45,16 @@ router.get("/event", function(req,res) {
 });
 
 router.get("/dashboard", function(req, res) {
-//TODO set req.user appropriately 
-//TODO check is req.user exists 
-//TODO validate req.user/ validate JWT
-  db.User.findAll({ 
-  	where: {
-  		UserUuid: req.user 
-  	} 
-  	  }).then(function(results) {
-    // var hbsObject = {
-    //   : results
-    // };
-    // console.log(hbsObject);
-    // res.render("dashboard", results);
-    res.render("dashboard", testObj);
+    jwt.verify(req.cookies.cookiename.token, secret, function(err, decoded) {
+      console.log("Info stored in token:");
+      console.log(decoded);
+      db.User.findAll({
+        where: {
+        	uuid: decoded.user
+      }
+        }).then(function(results) {
+      res.render("dashboard", results);
+      });
     });
 });
 

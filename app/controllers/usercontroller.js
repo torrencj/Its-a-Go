@@ -1,10 +1,12 @@
-var fs        = require('fs');
-var express   = require('express');
-var router    = express.Router();
-var path      = require('path')
-var db        = require("../models");
-var bcrypt    = require('bcrypt');
-var jwt       = require('jsonwebtoken');
+var fs         = require('fs');
+var express    = require('express');
+var router     = express.Router();
+var path       = require('path')
+var db         = require("../models");
+var bcrypt     = require('bcrypt');
+var jwt        = require('jsonwebtoken');
+var jwtexpress = require('jwt-express');
+var cookieParser = require('cookie-parser');
 
 const saltRounds = 10;
 
@@ -23,6 +25,8 @@ router.post('/new', function(req, res) {
 
 // User login
 router.post('/login', function(req, res) {
+  console.log(req.cookies)
+
   console.log(req.body);
   // Load hash from your password DB.
   db.User.findOne({
@@ -43,10 +47,29 @@ router.post('/login', function(req, res) {
           //TODO Set heroku environment variable config to keep our secret safe.
           var cert = fs.readFileSync(path.join(__dirname, '../../private.pem'));  // get private key
 
-          jwt.sign({ foo: 'bar' }, cert, function(err, token) {
+          // var jwt = res.jwt({
+          //   user: userRecord.UserUuid,
+          //   auth: 'true'
+          //  });
+          //  console.log(jwt);
+          console.log(userRecord.uuid);
+
+          jwt.sign({
+            user: userRecord.uuid,
+            auth: 'true'
+          }, cert, function(err, token) {
             console.log(token);
-            res.set("authorization", token); // Set response header to the access token. //TODO: save this in local storage
-            res.send(`Welcome ${userRecord.firstname}! You are successfully logged in.`)
+            let options = {
+              token: token,
+              maxAge: 1000 * 60 * 60, // would expire after 1 hour
+              httpOnly: true, // The cookie only accessible by the web server
+              signed: true // Indicates if the cookie should be signed
+          }
+            res.cookie('cookiename', options) //TODO Setting a cookie....
+            // res.set("authorization", token); // Set response header to the access token. //TODO: save this in local storage
+            // res.end();
+            res.redirect("/dashboard");
+            // res.send(`Welcome ${userRecord.firstname}! You are successfully logged in.`)
           });
         } else {
           //Wrong password.

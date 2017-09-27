@@ -4,16 +4,23 @@
 // ******************************************************************************
 // *** Dependencies
 // =============================================================
+var fs = require('fs');
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 var path = require("path");
-// var handlebars = require("express-handlebars");
+var cookieParser = require('cookie-parser');
+// var jwtexpress = require('jwt-express');
+
+
+//read our cert file for use later
+var cert = fs.readFileSync(path.join(__dirname, 'private.pem'));  // get private key
+
 
 // Set up the Express App
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 8081;
+var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
 var db = require("./app/models");
@@ -23,6 +30,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
+// Parse cookies
+app.use(cookieParser())
+
+// Init jsonwebtoken middleware
+// app.use(jwtexpress.init('cert'));
 
 // Set up method overriding
 app.use(methodOverride("_method"));
