@@ -1,0 +1,49 @@
+//ajax call to get user email photo.
+function CallInstantApi() {
+    $.get("ajax/instant.aspx?email=" + $("#tbInstant").val(),
+        function (data) {
+            data = JSON.parse(data);
+            if (!data.Valid) {
+                bootbox.alert("Sorry, Google doesn't know this email address, try a Gmail address instead?");
+            } else {
+                $("#divInstant").html(data.Name);
+                $("#imgInstant").attr("src", data.Image);
+            }
+
+        });
+}
+
+
+
+
+This is a totally secure password isn't it?
+
+
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+ service: 'gmail',
+ auth: {
+        user: 'itsagoinfo@gmail.com',
+        pass: "This is a totally secure password isn't it?"
+    }
+});
+
+var mailList = [
+  'torrencj@gmail.com'
+  ];
+
+var mailOptions = {
+  from: 'itsagoinfo@gmail.com', // sender address
+  to: mailList, // list of receivers
+  subject: 'This is a test', // Subject line
+  html: '<p>Hi john, this is a message from node.</p>'// plain text body
+};
+
+
+transporter.sendMail(mailOptions, function (err, info) {
+   if(err)
+     console.log(err)
+   else
+     console.log(info);
+});
