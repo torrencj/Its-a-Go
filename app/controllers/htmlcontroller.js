@@ -58,12 +58,13 @@ router.get("/dashboard", function(req, res) {
     jwt.verify(req.cookies.cookiename.token, secret, function(err, decoded) {
       console.log("Info stored in token:");
       console.log(decoded);
-      db.User.findAll({
+      db.User.findOne({
         where: {
         	uuid: decoded.user
       }
         }).then(function(results) {
-      res.render("dashboard", results);
+          console.log(results.dataValues);
+      res.render("dashboard", results.dataValues);
       });
     });
   } else { // They aren't signed in.
