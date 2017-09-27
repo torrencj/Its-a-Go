@@ -5,8 +5,38 @@ var path       = require('path')
 var db         = require("../models");
 var bcrypt     = require('bcrypt');
 var jwt        = require('jsonwebtoken');
+
 var jwtexpress = require('jwt-express');
 var cookieParser = require('cookie-parser');
+
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+ service: 'gmail',
+ auth: {
+        user: 'itsagoinfo@gmail.com',
+        pass: "This is a totally secure password isn't it?"
+        //TODO Change this to an environment variable
+    }
+});
+
+var mailList = [
+  'torrencj@gmail.com',
+  'jamiewithaY@gmail.com',
+  'jacquecwhite@gmail.com',
+  'will.wms@gmail.com'
+  ];
+
+var htmlstream = fs.createReadStream(path.join(__dirname, '../emailtemplates/welcome.html'));
+
+var mailOptions = {
+  from: 'itsagoinfo@gmail.com', // sender address
+  to: mailList,                 // list of receivers
+  subject: 'This is a test',    // Subject line
+  // html: '<p>Hi john, this is a message from node.</p>'// plain text body
+  html: htmlstream              //File stream body....
+};
+
 
 const saltRounds = 10;
 
@@ -17,6 +47,14 @@ router.post('/new', function(req, res) {
     console.log(hash);
     req.body.hash = hash;
     db.User.create(req.body).then(function(data) {
+
+      transporter.sendMail(mailOptions, function (err, info) {
+         if(err) //TODO Need to check if file stream is still open and close if needed.
+           console.log(err)
+         else
+           console.log(info);
+      });
+
       res.send(data);
     });
   });
