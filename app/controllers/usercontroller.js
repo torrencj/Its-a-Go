@@ -23,7 +23,7 @@ var transporter = nodemailer.createTransport({
 var mailList = [
   // 'torrencj@gmail.com',
   // 'jamiewithaY@gmail.com',
-  'jacquecwhite@gmail.com'
+  // 'jacquecwhite@gmail.com',
   // 'will.wms@gmail.com'
   ];
 
