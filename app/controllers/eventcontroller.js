@@ -1,19 +1,13 @@
-//Example eventcontroller.
-//TODO: Set up event routes
 var express = require('express');
 var router = express.Router();
 var db = require("../models");
-// sequelize.import("./models/event.js");
 
 router.get("/all", function(req, res) {
   db.Event.findAll({
     include: [ db.User ]
   }).then(function(results) {
-      // results are available to us inside the .then
     res.json(results);
     });
-    // console.log(results);
-    // res.render("index", results);
   });
 
 // router.get("/", function(req, res) {
