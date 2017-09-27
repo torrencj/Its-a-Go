@@ -54,8 +54,6 @@ app.set("view engine", "handlebars");
 app.set('views', __dirname + '/app/views');
 
 // Main route
-//TODO: Routes should only go in the controllers, I think? I'm not really clear on where the index
-//      route should go.
 // =============================================================
 var htmlcontroller = require("./app/controllers/htmlcontroller.js");
 app.use("/", htmlcontroller);

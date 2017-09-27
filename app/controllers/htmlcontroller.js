@@ -24,12 +24,19 @@ var testObj = {
 }
 
 router.get("/", function(req,res) {
-  console.log('Token: ', req.cookies.cookiename.token)
     res.render("splash");
 });
 
 router.get("/login", function(req,res) {
+  if (req.cookies.cookiename) {
+    jwt.verify(req.cookies.cookiename.token, secret, function(err, decoded) {
+      if (err) throw err;
+      res.redirect("/dashboard")
+    });
+  } else {
     res.render("login");
+  }
+
 });
 
 router.get("/signup", function(req,res) {
@@ -45,6 +52,7 @@ router.get("/event", function(req,res) {
 });
 
 router.get("/dashboard", function(req, res) {
+  if (req.cookies.cookiename) {
     jwt.verify(req.cookies.cookiename.token, secret, function(err, decoded) {
       console.log("Info stored in token:");
       console.log(decoded);
@@ -56,6 +64,9 @@ router.get("/dashboard", function(req, res) {
       res.render("dashboard", results);
       });
     });
+  } else { // They aren't signed in.
+    res.redirect("/")
+  }
 });
 
 router.get("/about", function(req,res) {
