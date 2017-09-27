@@ -10,6 +10,28 @@ router.get("/all", function(req, res) {
     });
   });
 
+
+  router.post('/new', function(req, res) {
+    var geocoder = require('google-geocoder');
+
+    var geo = geocoder({
+      key: 'AIzaSyBuD0bP9XwZ9XqGr1vmeUZbeitiaw8knZY'
+    });
+
+    geo.find('223 Edenbridge Dr, Toronto', function(err, loc){
+      console.log(loc);
+      // process response object
+      res.end();
+
+    });
+
+    console.log(req.body);
+    // db.Event.create(req.body).then(function(data) {
+    //   res.send(data);
+    // })
+  })
+
+
 // router.get("/", function(req, res) {
 //   db.Event.all(function(data) {
 //     var hbsObject = {
@@ -19,13 +41,6 @@ router.get("/all", function(req, res) {
 //     res.render("index", hbsObject);
 //   });
 // });
-
-router.post('/new', function(req, res) {
-  console.log(req.body);
-  db.Event.create(req.body).then(function(data) {
-    res.send(data);
-  })
-})
 
 
 // router.get('/', function(req, res) {
