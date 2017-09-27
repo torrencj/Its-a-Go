@@ -73,6 +73,10 @@ router.get("/stripetest", function (req, res) {
   res.render("stripetest")
 })
 
+router.get("/signout", function (req, res) {
+  res.clearCookie("cookiename");
+  res.render("login")
+})
 
 
 // router.get("/all", function(req, res) {
