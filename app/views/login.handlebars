@@ -1,11 +1,44 @@
-<!-- Login demo -->
-<h2>User login:</h2>
-<hr>
-<form class="" action="/api/user/login" method="post">
-  <label for="email"> Email:</label>
-  <input type="text" name="email">
-  <br>
-  <label for="pass"> Password:</label>
-  <input type="password" name="password">
-  <button type="submit" name="button">Submit</button>
-</form>
+<!-- NAVBAR -->
+
+<div class="mainContainer">
+<div class="navbar-fixed">
+<nav>
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo">itsaGO</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="login">Login</a></li>
+      {{!-- <li><a href="loginOut">Log Out</a></li>
+      <li><a href="dashboard">Event Dashboard</a></li> --}}
+      <li><a href="about">About</a></li>
+
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+      <li><a href="login">Login</a></li>
+      {{!-- <li><a href="dashboard">Event Dashboard</a></li> --}}
+      <li><a href="about">About</a></li>
+
+  </ul>
+  </div>
+</nav>
+</div>
+<!-- END NAVBAR -->
+
+<!-- Login -->
+<br>
+<div class="container">
+  <div class="row center">
+    <div class="col s6 offset-s3 white black-text">
+      <h2>User login:</h2>
+      <form class="" action="/api/user/login" method="post">
+        <label for="email"> Email:</label>
+        <input type="text" name="email">
+        <br>
+        <label for="pass"> Password:</label>
+        <input type="password" name="password">
+        <button type="submit" name="button">Submit</button>
+      </form>
+      <br>
+      <p class="black-text">Not a user? <a href="/signup">Signup.</a></p>
+    </div>
+  </div>
+</div>

@@ -25,7 +25,14 @@ router.get("/login", function(req,res) {
 });
 
 router.get("/signup", function(req,res) {
+  if (req.cookies.cookiename) {
+    jwt.verify(req.cookies.cookiename.token, secret, function(err, decoded) {
+      if (err) throw err;
+      res.redirect("/dashboard")
+    });
+  } else {
     res.render("signup");
+  }
 });
 
 router.get("/create", function(req,res) {
@@ -56,8 +63,7 @@ router.get("/dashboard", function(req, res) {
         	uuid: decoded.user
       }
         }).then(function(results) {
-      // res.render("dashboard", results);
-      res.send(results)
+      res.render("dashboard", results);
       });
     });
   } else { // They aren't signed in.
@@ -75,7 +81,7 @@ router.get("/stripetest", function (req, res) {
 
 router.get("/signout", function (req, res) {
   res.clearCookie("cookiename");
-  res.render("login")
+  res.render("splash")
 })
 
 
