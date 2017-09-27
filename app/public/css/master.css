@@ -1,0 +1,33 @@
+html {
+    background: url("./img/itsago2.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+
+.nav-wrapper {
+    font-family: 'Bevan', cursive;
+    background-color: #216F46;
+}
+
+h1 {
+    font-family: 'Alfa Slab One', cursive;
+    font-weight: bold;
+    text-shadow: 2px 2px 8px rgba(255, 92, 113, 0.96);
+}
+
+h5 {
+    font-family: 'Fjalla One', sans-serif;
+    color: white;
+}
+
+.page-footer {
+    font-family: 'Bevan', cursive;
+    background-color: #216F46;
+}
+
+p {
+    color: white;
+}
