@@ -58,7 +58,9 @@ router.get("/about", function(req,res) {
     res.render("about");
 });
 
-
+router.get("/signout", function(req,res) {
+    res.redirect("/")
+});
 
 // router.get("/all", function(req, res) {
 //   db.Event.findAll({}).then(function(results) {
