@@ -21,6 +21,10 @@ var transporter = nodemailer.createTransport({
 
 const saltRounds = 10;
 
+//test stripe
+router.post('/savecc', (req, res) => {
+  console.log(req.body);
+})
 // Add a new user.
 router.post('/new', function(req, res) {
   var welcomeEmail = fs.createReadStream(path.join(__dirname, '../emailtemplates/welcome.html'));
