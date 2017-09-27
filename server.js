@@ -10,7 +10,6 @@ var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 var path = require("path");
 var cookieParser = require('cookie-parser');
-// var jwtexpress = require('jwt-express');
 
 
 //read our cert file for use later
