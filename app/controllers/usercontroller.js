@@ -21,10 +21,10 @@ var transporter = nodemailer.createTransport({
 });
 
 var mailList = [
-  'torrencj@gmail.com',
-  'jamiewithaY@gmail.com',
-  'jacquecwhite@gmail.com',
-  'will.wms@gmail.com'
+  // 'torrencj@gmail.com',
+  // 'jamiewithaY@gmail.com',
+  // 'jacquecwhite@gmail.com',
+  // 'will.wms@gmail.com'
   ];
 
 var htmlstream = fs.createReadStream(path.join(__dirname, '../emailtemplates/welcome.html'));
