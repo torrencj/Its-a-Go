@@ -6,27 +6,16 @@ var db         = require("../models");
 var bcrypt     = require('bcrypt');
 var jwt        = require('jsonwebtoken');
 var nodemailer = require('nodemailer');
+var stripe     = require("stripe")("sk_test_BXX25dhatRKrf5ARZ6FxpZGp");
 
 // var pw = fs.createReadStream(path.join(__dirname, '../emailtemplates/welcome.html'));
 
-var transporter = nodemailer.createTransport({
- service: 'gmail',
- auth: {
-        user: 'itsagoinfo@gmail.com',
-        pass: "This is a totally secure password isn't it?"
-        //TODO Change this to an environment variable
-    }
-});
 
 
 const saltRounds = 10;
 
 //test stripe
 router.post('/savecc', (req, res) => {
-  var stripe = require("stripe")(
-    "sk_test_BXX25dhatRKrf5ARZ6FxpZGp"
-  );
-
   console.log(req.body);
 
   stripe.customers.create({
@@ -64,6 +53,16 @@ router.post('/savecc', (req, res) => {
 router.post('/new', function(req, res) {
   var welcomeEmail = fs.createReadStream(path.join(__dirname, '../emailtemplates/welcome.html'));
 
+  // Set transporter for email.
+  var transporter = nodemailer.createTransport({
+   service: 'gmail',
+   auth: {
+          user: 'itsagoinfo@gmail.com',
+          pass: "This is a totally secure password isn't it?"
+          //TODO Change this to an environment variable
+      }
+  });
+
   var mailOptions = {
     from: 'itsagoinfo@gmail.com', // sender address
     to: req.body.email,           // user email
@@ -94,6 +93,7 @@ router.post('/new', function(req, res) {
 router.post('/login', function(req, res) {
   console.log(req.cookies)
   console.log(req.body);
+  
   // Find the user in the DB
   db.User.findOne({
     where: {
