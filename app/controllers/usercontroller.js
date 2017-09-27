@@ -23,7 +23,42 @@ const saltRounds = 10;
 
 //test stripe
 router.post('/savecc', (req, res) => {
+  var stripe = require("stripe")(
+    "sk_test_BXX25dhatRKrf5ARZ6FxpZGp"
+  );
+
   console.log(req.body);
+
+  stripe.customers.create({
+    description: `Customer for ${req.body.stripeEmail}`,
+    email: req.body.stripeEmail,
+    source: req.body.stripeToken // obtained from the client side JS.
+  }, function(err, customer) {
+  //TODO update user in our DB with their token and what they've agreed to pay?
+  // asynchronously called
+  console.log(customer);
+  console.log(customer.id); //Used in fetching:
+  /*
+  //Fetching:
+  stripe.customers.retrieve(
+  "cus_BTiNyUr7MGy8aG",
+  function(err, customer) {
+    // asynchronously called
+  });
+  */
+
+  // Charge the user's card:
+  stripe.charges.create({
+    amount: 1000,
+    currency: "usd",
+    description: "Joe's BBQ",
+    customer: customer.id,
+  }, function(err, charge) {
+    // asynchronously called
+    console.log(charge);
+  });
+
+});
 })
 // Add a new user.
 router.post('/new', function(req, res) {
