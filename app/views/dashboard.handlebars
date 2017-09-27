@@ -6,6 +6,7 @@
   <!-- NAVBAR -->
 
 <div class="mainContainer">
+
     <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
@@ -32,21 +33,18 @@
 <!-- END NAVBAR -->
 
 <div class="container"> <!-- main container -->
+<div class="row" id="main-row">
 
-  
-  <div class="row" id="main-row">
-
-      <div class="col s6"><!-- Profile picture / user info -->
-          
-        <h5>Hi {{this.firstname}}</h5>
+      <div class="col s6 black-text center-align"><!-- Profile picture / user info -->
+        <h4>Hi {{this.firstname}}</h4>
         <script src="https://www.avatarapi.com/js.aspx?email={{this.email}}&size=200">
         </script>
 
         <div class="section">
           <ul>
-            <li>
+           {{!--  <li>
               <p class="flow-text">Email: {{this.email}} </p>
-            </li>
+            </li> --}}
             <li>
               <p class="flow-text">Events Planned: </p>
             </li>          
@@ -54,7 +52,7 @@
         </div><!-- end section -->
 
     <div class="col s6">
-      <h5>Calendar<span id= "calendar"></span></h5>
+      <h5>Upcoming Events<span id= "calendar"></span></h5>
       <div class="collection">
         <a href="#" class="collection-item">event 1</a>
         <a href="#" class="collection-item">event 2</a>
@@ -62,12 +60,19 @@
         <a href="#" class="collection-item">event 4</a>
       </div>
     </div>
+    <br>
+    <br>
+
 
 
   </div>  <!-- END OF ROW -->
    <br>
     <br>
-  <div class="col s12 center-align">
+
+  <div class="col s12 center-align" id="eventDiv">
+     <hr>
+     <br>
+     <br>
     <a href="event" class="waves-effect waves-light btn ">Create Event</a>
   </div>
 
