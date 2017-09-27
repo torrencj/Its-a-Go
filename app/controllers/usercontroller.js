@@ -6,9 +6,6 @@ var db         = require("../models");
 var bcrypt     = require('bcrypt');
 var jwt        = require('jsonwebtoken');
 
-// var jwtexpress = require('jwt-express');
-// var cookieParser = require('cookie-parser');
-
 var nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({

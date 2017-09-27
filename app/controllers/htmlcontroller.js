@@ -4,7 +4,6 @@ var path       = require('path');
 var fs         = require('fs');
 var db 	       = require("../models");
 var jwt        = require('jsonwebtoken');
-// var jwtexpress = require('jwt-express');
 var cookieParser = require('cookie-parser');
 
 var secret = fs.readFileSync(path.join(__dirname, '../../private.pem'));
