@@ -2,8 +2,7 @@
   Accepts:
 
   userData = {
-  firstName : "Bob",
-  lastName : "Test",
+  name: "bobby test"
   email : "bob@test.com"
   }
 
@@ -47,7 +46,7 @@ module.exports = function(userData, eventData) {
   var newMail = {
     from: 'itsagoinfo@gmail.com', // sender address
     to: userData.email,           // user email
-    subject: `${userData.firstname}, welcome to ItsAGo!`,    // Subject line
+    subject: `${userData.name}, welcome to ItsAGo!`,    // Subject line
     template: 'welcome',
     context: userData
   };
@@ -55,7 +54,7 @@ module.exports = function(userData, eventData) {
   if (eventData !== null) {
     options.viewEngine.defaultLayout = 'invite';
     newMail.subject =  `${userData.name}, you've been invited to ${eventData.eventName}`;
-    newMail.context = {userData, eventData}
+    newMail.context = {userData, eventData};
   }
 
   transporter.use('compile', hbs(options));

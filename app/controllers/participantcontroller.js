@@ -3,17 +3,18 @@ var express    = require('express');
 var router     = express.Router();
 var path       = require('path');
 var db 	       = require("../models");
+var customEmail  = require(path.join(__dirname, "../../custom_modules/emails.js"));
+
 // var jwt        = require('jsonwebtoken');
 // var cookieParser = require('cookie-parser');
 
 router.post("/new", function(req, res) {
   console.log(req.body);
   db.Participant.create(req.body).then(function(participantData) {
-    if (err) {
-        throw err;
-    } else {
-      customEmail(req.body, null);
-    }
+    console.log(participantData.dataValues);
+
+    customEmail({name: req.body.name, email: req.body.email}, null);
+
   })
   res.end();
 });

@@ -69,13 +69,30 @@ router.get("/event", function(req,res) {
     res.render("event");
 });
 
-router.get("/event/:id", function(req,res) {
+// router.get("/event/:id", function(req,res) {
+//   db.Event.findOne({
+//   where: {
+//       id: req.params.id
+//     }
+//   })
+//   res.render("event")
+// });
+
+//NOT protected.
+router.get("/event/:eventId", function(req, res) {
+  console.log(req.params.eventId);
   db.Event.findOne({
-  where: {
-      id: req.params.id
+    where: {
+      id: req.params.eventId
+    }
+  }).then(function(eventData) {
+    console.log(eventData);
+    if (eventData) {
+      res.render("event");
+    } else {
+      res.send("Nuthin here.")
     }
   })
-  res.render("event")
 });
 
 router.get("/dashboard", function(req, res) {

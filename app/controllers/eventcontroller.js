@@ -52,16 +52,23 @@ router.post('/new', function(req, res) {
       db.Event.create(newEvent).then(function(data) {
 
         db.User.findOne({
-        where: {
-          uuid: decoded.user
-        }
-      })
-      .then(function(record) {
-        var newParticipant = {
-          email: record.email,
-          stripeToken: null,
-          EventId: data.id
-        };
+          where: {
+            uuid: decoded.user
+          }
+        })
+        .then(function(record) {
+          // var newParticipant = {
+          //   email: record.email,
+          //   stripeToken: null,
+          //   EventId: data.id
+          // };
+          var newParticipant = {
+            name: record.firstName,
+            avatar: null,
+            email: record.email,
+            stripeToken: null,
+            EventId: 1
+          };
 
         db.Participant.create(newParticipant).then(function(participantData){
           // res.send(participantData);
@@ -74,6 +81,9 @@ router.post('/new', function(req, res) {
     res.redirect("/login");
   }
 });
+
+
+
 
 // router.post('/new', function(req, res) {
 //   console.log(req.body);

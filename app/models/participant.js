@@ -10,11 +10,11 @@ module.exports = function(sequelize, DataTypes) {
 	  },
 		avatar: {
 	    type: DataTypes.STRING,
-	    allowNull: false
+	    allowNull: true
 	  },
 		name: {
 	    type: DataTypes.STRING,
-	    allowNull: false
+	    allowNull: true
 	  },
 	  stripeToken: {
 	    type: DataTypes.STRING,
