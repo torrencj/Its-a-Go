@@ -41,7 +41,6 @@ router.post('/new', function(req, res) {
       req.body.UserUuid = decoded.user; //Make a new key in body and set it to the uuid.
       console.log(req.body.event);
 
-
       var newEvent = {
         event: req.body.event,
         date: req.body.date,
@@ -68,11 +67,8 @@ router.post('/new', function(req, res) {
         db.Participant.create(newParticipant).then(function(participantData){
           res.send(participantData);
         })
-
       });
-
       });
-
     });
   } else { // They aren't signed in.
     res.redirect("/login");

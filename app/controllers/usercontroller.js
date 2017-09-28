@@ -7,7 +7,8 @@ var bcrypt     = require('bcrypt');
 var jwt        = require('jsonwebtoken');
 var nodemailer = require('nodemailer');
 var stripe     = require("stripe")("sk_test_BXX25dhatRKrf5ARZ6FxpZGp");
-
+var cert       = fs.readFileSync(path.join(__dirname, '../../private.pem'));  // get private key
+var emailjunk  = require(path.join(__dirname, "../../custom_modules/emails.js"));
 // var pw = fs.createReadStream(path.join(__dirname, '../emailtemplates/welcome.html'));
 
 
@@ -51,39 +52,80 @@ router.post('/savecc', (req, res) => {
 })
 // Add a new user.
 router.post('/new', function(req, res) {
-  var welcomeEmail = fs.createReadStream(path.join(__dirname, '../emailtemplates/welcome.html'));
-
-  // Set transporter for email.
-  var transporter = nodemailer.createTransport({
-   service: 'gmail',
-   auth: {
-          user: 'itsagoinfo@gmail.com',
-          pass: "This is a totally secure password isn't it?"
-          //TODO Change this to an environment variable
-      }
-  });
-
-  var mailOptions = {
-    from: 'itsagoinfo@gmail.com', // sender address
-    to: req.body.email,           // user email
-    subject: 'This is a test',    // Subject line
-    html: welcomeEmail              //File stream body....
-  };
+  // var welcomeEmail = fs.createReadStream(path.join(__dirname, '../emailtemplates/welcome.html'));
 
   console.log(req.body);
   bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
     console.log(hash);
     req.body.hash = hash;
-    db.User.create(req.body).then(function(data) {
+    db.User.create(req.body).then(function(userData) {
+      if (err) {
+        res.end();
+      } else {
 
-      transporter.sendMail(mailOptions, function (err, info) {
-         if(err) //TODO Need to check if file stream is still open and close if needed.
-           console.log(err)
-         else
-           console.log(info);
-      });
-      // res.send(data);
-      res.redirect("/dashboard"); // Shouldn't this go to /api/user/dashboard????
+        // var hbs = require('nodemailer-express-handlebars');
+        // var transporter = nodemailer.createTransport({
+        //  service: 'gmail',
+        //  auth: {
+        //         user: 'itsagoinfo@gmail.com',
+        //         pass: "This is a totally secure password isn't it?"
+        //         //TODO Change this to an environment variable
+        //     }
+        // });
+        //
+        // var options = {
+        //  viewEngine: {
+        //      extname: '.handlebars',
+        //      layoutsDir: 'app/views/emailtemplates/',
+        //      defaultLayout : 'welcome',
+        //      partialsDir : 'app/views/partials/'
+        //  },
+        //  viewPath: 'app/views/emailtemplates/',
+        //  extName: '.handlebars'
+        // };
+        //
+        // transporter.use('compile', hbs(options));
+        //
+        // var newMail = {
+        //   from: 'itsagoinfo@gmail.com', // sender address
+        //   to: 'jacquecwhite@gmail.com',           // user email
+        //   subject: 'This is a test for jacque',    // Subject line
+        //   template: 'welcome',
+        //   context: req.body
+        //   // {
+        //   //   userName: req.body.firstName // Can also do this.
+        //   // }
+        // };
+        // transporter.sendMail(newMail, function (err, info) {
+        //    if(err) {//TODO Need to check if file stream is still open and close if needed.
+        //      console.log(err);
+        //    }
+        //    else {
+        //      console.log(info);
+        //    }
+        // });
+
+        emailjunk(req.body, null);
+
+        jwt.sign({
+          user: userData.uuid,
+          auth: 'true'
+        }, cert, function(err, token) {
+          console.log(token);
+
+          let options = {
+            token: token,
+            maxAge: 1000 * 60 * 15, // would expire after 15 min //TODO This never expires....
+            httpOnly: true, // The cookie only accessible by the web server
+            signed: true // Indicates if the cookie should be signed
+          }
+
+          res.cookie('cookiename', options)
+          res.redirect("/dashboard");
+        });
+      }
+
+      //Former location of lines 99-100
     });
   });
 });
@@ -93,7 +135,7 @@ router.post('/new', function(req, res) {
 router.post('/login', function(req, res) {
   console.log(req.cookies)
   console.log(req.body);
-  
+
   // Find the user in the DB
   db.User.findOne({
     where: {
@@ -107,9 +149,7 @@ router.post('/login', function(req, res) {
         if (err) throw err;
         console.log(response);
         if (response) {
-          //TODO Make sure this is an appropriate use of filesync.
           //TODO Set heroku environment variable config to keep our secret safe.
-          var cert = fs.readFileSync(path.join(__dirname, '../../private.pem'));  // get private key
           console.log(userRecord.uuid);
 
           jwt.sign({
@@ -119,10 +159,10 @@ router.post('/login', function(req, res) {
             console.log(token);
             let options = {
               token: token,
-              maxAge: 1000 * 60 * 15, // would expire after 1 hour
+              maxAge: 1000 * 60 * 15, // would expire after 15 min //TODO This never expires....
               httpOnly: true, // The cookie only accessible by the web server
               signed: true // Indicates if the cookie should be signed
-          }
+            }
             res.cookie('cookiename', options)
             res.redirect("/dashboard");
           });
