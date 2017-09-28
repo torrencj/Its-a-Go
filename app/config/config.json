@@ -3,8 +3,9 @@
     "username": "root",
     "password": "root",
     "database": "itsago",
-    "host": "127.0.0.1",
+    "host": "DATABASE_URL",
     "dialect": "mysql"
+    
   },
   "test": {
     "username": "root",
