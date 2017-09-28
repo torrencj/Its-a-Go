@@ -1,7 +1,7 @@
 <!-- NAVBAR -->
 
 <div class="mainContainer">
-  <div class="navbar-fixed">
+  <div class="navbar">
   <nav>
     <div class="nav-wrapper">
      <a href="/" class="brand-logo">itsaGO</a>
@@ -18,17 +18,15 @@
 
 
 <!-- END NAVBAR -->
-
-
 <div class="container">
-<div class="row teal lighten-4">
+<div class="row teal lighten-4" style="margin-top:24px; padding:20px">
     <div class="col s12 teal accent-4">
-        <h2>Create a new event:</h2>
-    <br>
+
+        <h2 style="text-align: center">Create a new event:</h2>
     <hr>
     </div>
     <div class="col s2"></div>
-    <div class="col s2">
+    <div class="col s6">
         <form action="/api/event/new" method="POST">
 
 {{!--             <label for="UserUuid">uuid</label>
