@@ -4,29 +4,34 @@
 module.exports = function(sequelize, DataTypes) {
 
 	var Event = sequelize.define("Event", {
-	  eventName: {
-	    type: DataTypes.STRING
+	  event: {
+	    type: DataTypes.STRING,
+	    allowNull: false
 	  },
-	  eventDate: {
-	    type: DataTypes.STRING
+	  date: {
+	    type: DataTypes.STRING,
+	    allowNull: false,
+	    validate: {
+	    	isDate: true
+	    }	    
 	  },
-	  eventAddress: {
-	    type: DataTypes.STRING
+	  notes: {
+	    type: DataTypes.STRING,
+	    allowNull: true
 	  },
-	  eventCity: {
-	    type: DataTypes.STRING
+	  totalCost: {
+	    type: DataTypes.DECIMAL,
+	    allowNull: false,
+	    validate: {
+	    	isDecimal: true
+	    }	    
 	  },
-	  eventState: {
-	    type: DataTypes.STRING
-	  },
-	  eventZip: {
-	    type: DataTypes.INTEGER
-	  },
-	  eventCost: {
-	    type: DataTypes.DECIMAL
-	  },
-	  eventMinimum: {
-	    type: DataTypes.INTEGER
+	  maxCPP: {
+	    type: DataTypes.DECIMAL,
+	    allowNull: false,
+	    validate: {
+	    	isDecimal: true
+	    }	    
 	  }
 	});
 
@@ -36,7 +41,13 @@ module.exports = function(sequelize, DataTypes) {
 				allowNull: false
 			}
 	  });
-	}
+	};
+
+	Event.associate = function(models) {
+	  Event.hasMany(models.Participant, {
+	    onDelete: "cascade"
+	  });
+	};
 
 return Event;
 
