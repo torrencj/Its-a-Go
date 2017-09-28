@@ -35,19 +35,34 @@ router.get("/signup", function(req,res) {
   }
 });
 
-router.get("/create", function(req,res) {
+router.get("/create-event-1of2", function(req,res) {
   if (req.cookies.cookiename) {
     jwt.verify(req.cookies.cookiename.token, secret, function(err, decoded) {
       console.log("Info stored in token:");
       console.log(decoded);
 
-      res.render("create", decoded);
+      res.render("create-event-1of2", decoded);
+
+    });
+  } else { // They aren't signed in.
+    res.redirect("/create-event-2of2")
+  }
+});
+
+router.get("/create-event-2of2", function(req,res) {
+  if (req.cookies.cookiename) {
+    jwt.verify(req.cookies.cookiename.token, secret, function(err, decoded) {
+      console.log("Info stored in token:");
+      console.log(decoded);
+
+      res.render("create-event-2of2", decoded);
 
     });
   } else { // They aren't signed in.
     res.redirect("/")
   }
 });
+
 
 router.get("/event", function(req,res) {
     res.render("event");
