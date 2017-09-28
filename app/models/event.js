@@ -4,7 +4,7 @@
 module.exports = function(sequelize, DataTypes) {
 
 	var Event = sequelize.define("Event", {
-	  event: {
+	  eventName: {
 	    type: DataTypes.STRING,
 	    allowNull: false
 	  },
@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
 	    allowNull: false,
 	    validate: {
 	    	isDate: true
-	    }	    
+	    }
 	  },
 	  notes: {
 	    type: DataTypes.STRING,
@@ -24,14 +24,14 @@ module.exports = function(sequelize, DataTypes) {
 	    allowNull: false,
 	    validate: {
 	    	isDecimal: true
-	    }	    
+	    }
 	  },
 	  maxCPP: {
 	    type: DataTypes.DECIMAL,
 	    allowNull: false,
 	    validate: {
 	    	isDecimal: true
-	    }	    
+	    }
 	  }
 	});
 

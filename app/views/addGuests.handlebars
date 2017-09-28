@@ -9,7 +9,7 @@
           <li><a href="signout">Log Out</a></li>
           <li><a href="dashboard">Dashboard</a></li>
           <li><a href="about">About</a></li>
-          
+
         </ul>
   {{!--   SIDEBAR --}}
         <ul class="side-nav" id="mobile-demo">
@@ -17,7 +17,7 @@
           {{!-- <li><a href="login">Login</a></li> --}}
           <li><a href="dashboard">Dashboard</a></li>
           <li><a href="about">About</a></li>
-          
+
       </ul>
       </div>
     </nav>
@@ -29,13 +29,10 @@
         <h2>Inivite a friend:
           <br><h4 id="invalid-email-message"></h4>
         </h2>
-
-
     <br>
     <hr>
     </div>
-    <div class="col s2"></div>
-    <div class="col s2">
+    <div class="col s6 offset-s3">
     <form action="" method="">
       Email:<br>
       <input type="text" id="email-input-string" name="guestEmail">
@@ -47,11 +44,11 @@
 </div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-<script type="text/javascript"> 
+<script type="text/javascript">
 
   $(document).ready(function(){
 
-    var name; 
+    var name;
     var avatar;
 
     $("#add-email").click(function(event){
@@ -59,43 +56,49 @@
       $("#invalid-email-message").text("");
       var email = $("#email-input-string").val().trim();
 
-      console.log("Line 55: https://galvanize-cors-proxy.herokuapp.com/https://www.avatarapi.com/js.aspx?email=" + email + "&size=200");
+      // console.log("Line 55: https://galvanize-cors-proxy.herokuapp.com/https://www.avatarapi.com/js.aspx?email=" + email + "&size=200");
 
       $.get("https://galvanize-cors-proxy.herokuapp.com/https://www.avatarapi.com/js.aspx?email=" + email + "&size=200", function(data){
-          
-          console.log("Data: " + data);
+
+          // console.log("Data: " + data);
 
           $("#email-input-string").val("");
 
-          console.log("Line 62");
+          // console.log("Line 62");
 
-          if (data.includes("// No profile information"))
-            {
-              $("#invalid-email-message").text("This email appears invalid -- please try again");
-              return;
-            }
-          else 
-          {
-              response = response.replace("document.write(\"", "")
-              response = response.replace("\");", "");
-              console.log(response);
-              avatar = $(response).find("img").attr("src");
-              name = $(response).find("img").attr("title"); 
+          if (data.includes("// No profile information")) {
+            $("#invalid-email-message").text("This email appears invalid -- please try again");
+            return;
+          } else {
+            // console.log(response);
+            var response = data;
+            response = response.replace("document.write(\"", "")
+            response = response.replace("\");", "");
+            console.log(response);
+            avatar = $(response).find("img").attr("src");
+            name = $(response).find("img").attr("title");
 
-              console.log("AvatarURL from Gmail: " + avatar);
-              console.log("Name from Gmail: " + name);
+            console.log("AvatarURL from Gmail: " + avatar);
+            console.log("Name from Gmail: " + name);
 
-              var newParticipant = {
-                name: name,
-                avatar: avatar,
-                email: email,
-                stripeToken: null,
-                EventId: 1
-              };
+            var newParticipant = {
+              name: name,
+              avatar: avatar,
+              email: email,
+              stripeToken: null,
+              EventId: 1
+            };
 
-              $.post({"localhost:8080/api/participant/new",
-              newParticipant,
-              dataType: json
+              // $.ajax({"localhost:8080/api/participant/new",
+              // data: newParticipant,
+              // dataType: json
+              // }).done(function(data) {
+              //   console.log(data);
+              // });
+              $.ajax({
+                url: "/api/participant/new",
+                method: "POST",
+                data: newParticipant
               }).done(function(data) {
                 console.log(data);
               });
@@ -110,4 +113,3 @@
 
 
 </script>
-

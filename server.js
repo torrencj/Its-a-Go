@@ -29,7 +29,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
-
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 // Parse cookies
 app.use(cookieParser())
 
@@ -54,14 +58,17 @@ app.set('views', __dirname + '/app/views');
 
 // Main route
 // =============================================================
-var htmlcontroller = require("./app/controllers/htmlcontroller.js");
-app.use("/", htmlcontroller);
+var htmlController = require("./app/controllers/htmlcontroller.js");
+app.use("/", htmlController);
 
-var eventcontroller = require("./app/controllers/eventcontroller.js");
-app.use("/api/event", eventcontroller);
+var eventController = require("./app/controllers/eventcontroller.js");
+app.use("/api/event", eventController);
 
-var usercontroller = require("./app/controllers/usercontroller.js");
-app.use("/api/user", usercontroller);
+var userController = require("./app/controllers/usercontroller.js");
+app.use("/api/user", userController);
+
+var participantController = require("./app/controllers/participantcontroller.js");
+app.use("/api/participant", participantController);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

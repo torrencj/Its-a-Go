@@ -39,10 +39,9 @@ router.post('/new', function(req, res) {
       console.log("Info stored in token:");
       console.log(decoded);
       req.body.UserUuid = decoded.user; //Make a new key in body and set it to the uuid.
-      console.log(req.body.event);
 
       var newEvent = {
-        event: req.body.event,
+        eventName: req.body.eventName,
         date: req.body.date,
         notes: req.body.notes,
         totalCost: req.body.totalCost,
@@ -65,7 +64,8 @@ router.post('/new', function(req, res) {
         };
 
         db.Participant.create(newParticipant).then(function(participantData){
-          res.send(participantData);
+          // res.send(participantData);
+          res.redirect("/addGuests")
         })
       });
       });

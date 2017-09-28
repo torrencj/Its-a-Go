@@ -8,7 +8,7 @@ var jwt        = require('jsonwebtoken');
 var nodemailer = require('nodemailer');
 var stripe     = require("stripe")("sk_test_BXX25dhatRKrf5ARZ6FxpZGp");
 var cert       = fs.readFileSync(path.join(__dirname, '../../private.pem'));  // get private key
-var emailjunk  = require(path.join(__dirname, "../../custom_modules/emails.js"));
+var customEmail  = require(path.join(__dirname, "../../custom_modules/emails.js"));
 // var pw = fs.createReadStream(path.join(__dirname, '../emailtemplates/welcome.html'));
 
 
@@ -52,8 +52,6 @@ router.post('/savecc', (req, res) => {
 })
 // Add a new user.
 router.post('/new', function(req, res) {
-  // var welcomeEmail = fs.createReadStream(path.join(__dirname, '../emailtemplates/welcome.html'));
-
   console.log(req.body);
   bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
     console.log(hash);
@@ -62,50 +60,7 @@ router.post('/new', function(req, res) {
       if (err) {
         res.end();
       } else {
-
-        // var hbs = require('nodemailer-express-handlebars');
-        // var transporter = nodemailer.createTransport({
-        //  service: 'gmail',
-        //  auth: {
-        //         user: 'itsagoinfo@gmail.com',
-        //         pass: "This is a totally secure password isn't it?"
-        //         //TODO Change this to an environment variable
-        //     }
-        // });
-        //
-        // var options = {
-        //  viewEngine: {
-        //      extname: '.handlebars',
-        //      layoutsDir: 'app/views/emailtemplates/',
-        //      defaultLayout : 'welcome',
-        //      partialsDir : 'app/views/partials/'
-        //  },
-        //  viewPath: 'app/views/emailtemplates/',
-        //  extName: '.handlebars'
-        // };
-        //
-        // transporter.use('compile', hbs(options));
-        //
-        // var newMail = {
-        //   from: 'itsagoinfo@gmail.com', // sender address
-        //   to: 'jacquecwhite@gmail.com',           // user email
-        //   subject: 'This is a test for jacque',    // Subject line
-        //   template: 'welcome',
-        //   context: req.body
-        //   // {
-        //   //   userName: req.body.firstName // Can also do this.
-        //   // }
-        // };
-        // transporter.sendMail(newMail, function (err, info) {
-        //    if(err) {//TODO Need to check if file stream is still open and close if needed.
-        //      console.log(err);
-        //    }
-        //    else {
-        //      console.log(info);
-        //    }
-        // });
-
-        emailjunk(req.body, null);
+        customEmail(req.body, null);
 
         jwt.sign({
           user: userData.uuid,

@@ -27,14 +27,10 @@
     </div>
     <div class="col s2"></div>
     <div class="col s6">
-        <form action="/api/event/new" method="POST">
+        <form action="/api/event/new" method="post">
 
-{{!--             <label for="UserUuid">uuid</label>
-            <input type="text" name="UserUuid">
-            <br>
- --}}
-            <label for="event" placeholder="Folsom Street Festival">Event</label>
-            <input type="text" name="event">
+            <label for="eventName" placeholder="Folsom Street Festival">Event</label>
+            <input type="text" name="eventName">
             <br>
 
             <label for="date" placeholder="2018-09-21">Date</label>
@@ -53,7 +49,7 @@
             <input type="text" name="maxCPP">
             <br>
 
-            <button type="submit" >Submit</button>
+            <button type="submit" name='button'>Submit</button>
         </form>
         </div>
     <div class="col s2"></div>

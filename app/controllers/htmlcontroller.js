@@ -50,12 +50,13 @@ router.get("/create", function(req,res) {
   }
 });
 
-router.get("/addGuests/:eventId", function(req,res) {
+//show the page to add guests
+router.get("/addGuests", function(req,res) {
   if (req.cookies.cookiename) {
     jwt.verify(req.cookies.cookiename.token, secret, function(err, decoded) {
       console.log("Info stored in token:");
       console.log(decoded);
-      // res.render("addGuests", decoded);
+      res.render("addGuests", decoded);
       //LOGIC!!!
     });
   } else { // They aren't signed in.
