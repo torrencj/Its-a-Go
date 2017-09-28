@@ -53,6 +53,47 @@ p.flow-text{
 }
 /*END OF DASHBOARD*/
 
+/*CREATE STYLES*/
+
+.fig p {
+    color: black;
+}
+.fig {
+    background-color: #ffa726;
+    margin-top: 30px;
+    padding: 30px;
+    font-family: 'Marmelad', sans-serif;
+}
+
+.newton {
+    text-align: center;
+    background-color:#607d8b  ;
+    margin-top: 15px;
+    padding: 30px;
+    color: black;
+    font-family: 'Marmelad', sans-serif;
+}
+
+.innernewton {
+    background-color: #eeeeee;
+    color: black;
+    padding: 40px;
+    text-align: center;
+}
+
+.innernewton h5 {
+    color: black;
+}
+.map {
+    padding: 60px;
+    font-size: 20px;
+    border: 2px solid black;
+    font-family: 'Marmelad', sans-serif;
+}
+
+/*END OF EVENT STYLES*/
+
+
 .nav-wrapper {
     font-family: 'Bevan', cursive;
     background-color: #216F46;
