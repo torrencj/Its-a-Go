@@ -1,55 +1,67 @@
 
 
-  <!-- NAVBAR -->
+<!-- NAVBAR -->
 
 <div class="mainContainer">
-    <div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper">
-        <a href="#!" class="brand-logo">itsaGO</a>
-        <ul class="right hide-on-med-and-down">
-          {{!-- <li><a href="login">Login</a></li> --}}
-          <li><a href="loginOut">Log Out</a></li>
-          <li><a href="dashboard">Event Dashboard</a></li>
-          <li><a href="about">About</a></li>
-          
-        </ul>
+  <div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper">
+     <a href="/" class="brand-logo">itsaGO</a> 
+    <ul class="right hide-on-med-and-down">
+      {{!-- <li><a href="login">Login</a></li> --}}
+      <li><a href="signout">Log Out</a></li>
+      <li><a href="dashboard">Event Dashboard</a></li>
+      <li><a href="/">Home</a></li>
+    </ul>
 
-  {{!--   SIDEBAR --}}
-        <ul class="side-nav" id="mobile-demo">
-          <li><a href="loginOut">Log Out</a></li>
-          {{!-- <li><a href="login">Login</a></li> --}}
-          <li><a href="dashboard">Event Dashboard</a></li>
-          <li><a href="about">About</a></li>
-          
-      </ul>
-      </div>
-    </nav>
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+
+  </nav>
   </div>
+
 <!-- END NAVBAR -->
+
+
+
 <div class="container"> <!-- main container -->
-  
-<h5>Event Name: {{this.eventname}}</h5>
-<p class="">Address: {{this.address}} </p>
-<p class="">Date: {{this.date}}</p>
-<p class="">Details: {{this.details}}</p>
+<div class="row fig">  
+    <div class="col s8">
+      {{!-- EVENT --}}
+      <h3>(this.eventname) {{this.eventname}}</h3><br>
+    
+        <p> (this.date) {{this.date}}</p><br>
+        <p> (this.totalcost) {{this.totalcost}}</p>
+        <p> (this.currentcostpp) {{this.currentcostpp}}</p><br> 
 
-<form>
-  Guest Name:<br>
-  <input type="text" name="guestName"><br>
-  Guest Email:<br>
-  <input type="text" name="guestEmail">
-  <button type="submit">Send Email</button>
-</form>
+        <p> (this.details) {{this.details}}</p>  
+ 
+</div>
+    <div class="col s4 map">
+      <h4 id="upcoming"><strong>Total People to Go! <strong> </span></h4>
+      <p> Current Count: (this.currentCount) {{this.currentCount}}</p>
+      <p> Total Count Needed: (this.finalCount){{this.finalCount}}</p>
+    </div>
+</div>  
 
-<form>
-  Emails of Guests (comma separated emails) :<br>
-  <input type="text" name="firstname"><br>
-  <button type="submit">Send Emails</button>
-</form>
 
-<h5 id="upcoming">Map: </span></h5>
-<img src="placehold.it/200x200" alt="googlemap">
-<p class="flow-text">Click the map to get directions!</p>
+<div class="row newton">
+<div class="col s12">
+  <div class="row innernewton">
+  <div class="col s10">
+  <h3> Guests List: <h3>
+  <h5>(this.guestList){{this.guestList}}</h5>
+  </div>
+  </div>
+</div>
+</div>
 
 </div>
+
+{{!--   SIDE NAV --}}
+  <ul id="slide-out" class="side-nav">
+    <li><div class="user-view">
+    </div></li>
+    <li><a href="signout">Sign Out</a></li>
+    <li><a href="dashboard">Event Dashboard</a></li>
+    <li><a href="/">Home</a></li>
+  </ul>
