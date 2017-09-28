@@ -8,7 +8,13 @@ var db 	       = require("../models");
 
 router.post("/new", function(req, res) {
   console.log(req.body);
-  console.log(req.params);
+  db.Participant.create(req.body).then(function(participantData) {
+    if (err) {
+        throw err;
+    } else {
+      customEmail(req.body, null);
+    }
+  })
   res.end();
 });
 
