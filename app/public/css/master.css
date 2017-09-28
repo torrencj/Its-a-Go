@@ -19,10 +19,39 @@ html {
 }
 
 
-
 /*END OF ABOUT STYLES*/
 
+/*Login Styles*/
+.peaches{
+font-family: 'Marmelad', sans-serif;
 
+}
+/*END OF LOGIN STYLES*/
+
+/*Dashboard*/
+#main-row {
+    padding: 20px;
+    background-color: #dce6ee;
+    border: 2px solid #white;
+}
+
+ #eventDiv {
+    padding: 40px;
+   
+ }
+
+p.flow-text{
+    color: black;
+}
+
+.calendar{
+    color:black;
+}
+
+.a.collection-item{
+    bo
+}
+/*END OF DASHBOARD*/
 
 .nav-wrapper {
     font-family: 'Bevan', cursive;
