@@ -3,22 +3,26 @@
     "username": "root",
     "password": "root",
     "database": "itsago",
-    "host": "DATABASE_URL",
-    "dialect": "mysql"
-
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "use_env_variable": "DATABASE_URL"
   },
   "test": {
     "username": "root",
     "password": null,
     "database": "database_test",
-    "host": "DATABASE_URL",
-    "dialect": "mysql"
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "use_env_variable": "DATABASE_URL"
+
   },
   "production": {
     "username": "root",
     "password": null,
     "database": "database_production",
-    "host": "DATABASE_URL",
-    "dialect": "mysql"
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "use_env_variable": "DATABASE_URL"
+
   }
 }
