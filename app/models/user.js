@@ -11,13 +11,25 @@ var User = sequelize.define("User", {
     primaryKey: true
   },
   firstname: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      isAlpha: true
+    }         
   },
   lastname: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      isAlpha: true
+    }         
   },
   email: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    allowNull: false,    
+    validate: {
+      isEmail: true
+    }         
   },
   hash: {
     type: DataTypes.STRING
@@ -28,7 +40,7 @@ User.associate = function(models) {
   User.hasMany(models.Event, {
     onDelete: "cascade"
   });
-}
+};
 
 return User;
 
