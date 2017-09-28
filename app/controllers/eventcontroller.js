@@ -56,18 +56,37 @@ router.post('/new', function(req, res) {
       console.log(decoded);
       req.body.UserUuid = decoded.user; //Make a new key in body and set it to the uuid.      
       console.log(req.body.event);
-      
+
+
       var newEvent = {
         event: req.body.event,
         date: req.body.date,
-        notes:req.body.notes,
+        notes: req.body.notes,
         totalCost: req.body.totalCost,
         maxCPP: req.body.maxCPP,
         UserUuid: decoded.user
       };
 
       db.Event.create(newEvent).then(function(data) {
-        res.send(data);
+        
+        db.User.findOne({
+        where: {
+          uuid: decoded.user
+        }
+      })
+      .then(function(record) {
+        var newParticipant = {
+          email: record.email,
+          stripeToken: null,
+          EventId: data.id
+        };
+
+        db.Participant.create(newParticipant).then(function(participantData){
+          res.send(participantData);
+        })
+
+      });
+
       });
 
     });

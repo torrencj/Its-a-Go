@@ -15,7 +15,7 @@ DROP TABLE IF EXISTS `Events`;
 CREATE TABLE IF NOT EXISTS `Events` (`id` INTEGER NOT NULL auto_increment , `event` VARCHAR(255) NOT NULL, `date` VARCHAR(255) NOT NULL, `notes` VARCHAR(255), `totalCost` DECIMAL NOT NULL, `maxCPP` DECIMAL NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `UserUuid` CHAR(36) BINARY, PRIMARY KEY (`id`), FOREIGN KEY (`UserUuid`) REFERENCES `Users` (`uuid`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `Participants`;
-CREATE TABLE IF NOT EXISTS `Participants` (`id` INTEGER NOT NULL auto_increment , `name` VARCHAR(255) NOT NULL, `photoURL` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL, `stripeToken` VARCHAR(255) DEFAULT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `EventId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`EventId`) REFERENCES `Events` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS `Participants` (`id` INTEGER NOT NULL auto_increment , `email` VARCHAR(255) NOT NULL, `stripeToken` VARCHAR(255) DEFAULT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `EventId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`EventId`) REFERENCES `Events` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
 
 
 INSERT INTO `Users` (`uuid`,`firstname`,`lastname`,`email`,`hash`,`createdAt`,`updatedAt`) VALUES ('0219a160-a3e2-11e7-916d-1b889dd9cd57','Will','Williams','will.wms@gmail.com','$2a$10$XIWbVYt3DMcYxGV.aFP47uB8RjAQmDmgNmxWJEtBSK7D4C5htLk4y','2017-09-28 00:14:35','2017-09-28 00:14:35');
@@ -26,5 +26,13 @@ INSERT INTO `Users` (`uuid`,`firstname`,`lastname`,`email`,`hash`,`createdAt`,`u
 
 INSERT INTO `Events` (`id`,`event`,`date`,`notes`,`totalCost`,`maxCPP`,`createdAt`,`updatedAt`,`UserUuid`) VALUES (DEFAULT,'Folsom Street Festival','2018-09-21','Bring sunscreen!','600.00','75.00','2017-09-28 01:32:22','2017-09-28 01:32:22','0219a160-a3e2-11e7-916d-1b889dd9cd57');
 INSERT INTO `Events` (`id`,`event`,`date`,`notes`,`totalCost`,`maxCPP`,`createdAt`,`updatedAt`,`UserUuid`) VALUES (DEFAULT,'Cat Party','2017-09-27','Bring wine!','50.00','5.00','2017-09-28 01:34:10','2017-09-28 01:34:10','7eea9a50-a3e2-11e7-916d-1b889dd9cd57');
+INSERT INTO `Events` (`id`,`event`,`date`,`notes`,`totalCost`,`maxCPP`,`createdAt`,`updatedAt`,`UserUuid`) VALUES (DEFAULT,'Lunch in Paris','2017-10-13','Bring your new-found startup fortune!','15000.00','1500.00','2017-09-28 02:40:26','2017-09-28 02:40:26','a09a69a0-a3e2-11e7-916d-1b889dd9cd57');
 INSERT INTO `Events` (`id`,`event`,`date`,`notes`,`totalCost`,`maxCPP`,`createdAt`,`updatedAt`,`UserUuid`) VALUES (DEFAULT,'Vegetarian BBQ','2017-09-29','No tempeh, plz!','200.00','25.00','2017-09-28 01:36:31','2017-09-28 01:36:31','bc0107d0-a3e2-11e7-916d-1b889dd9cd57');
 INSERT INTO `Events` (`id`,`event`,`date`,`notes`,`totalCost`,`maxCPP`,`createdAt`,`updatedAt`,`UserUuid`) VALUES (DEFAULT,'Party at the Millenium','2017-09-30','Pretend we live here...','150.00','40.00','2017-09-28 01:38:11','2017-09-28 01:38:11','e5b9b9a0-a3e2-11e7-916d-1b889dd9cd57');
+
+
+INSERT INTO `Participants` (`id`,`email`,`stripeToken`,`createdAt`,`updatedAt`,`EventId`) VALUES (DEFAULT,'will.wms@gmail.com',NULL,'2017-09-28 02:34:39','2017-09-28 02:34:39',1);
+INSERT INTO `Participants` (`id`,`email`,`stripeToken`,`createdAt`,`updatedAt`,`EventId`) VALUES (DEFAULT,'jacquecwhite@gmail.com',NULL,'2017-09-28 02:34:39','2017-09-28 02:34:39',2);
+INSERT INTO `Participants` (`id`,`email`,`stripeToken`,`createdAt`,`updatedAt`,`EventId`) VALUES (DEFAULT,'jamiewithay@gmail.com',NULL,'2017-09-28 02:34:39','2017-09-28 02:34:39',3);
+INSERT INTO `Participants` (`id`,`email`,`stripeToken`,`createdAt`,`updatedAt`,`EventId`) VALUES (DEFAULT,'torrencj@gmail.com',NULL,'2017-09-28 02:34:39','2017-09-28 02:34:39',4);
+INSERT INTO `Participants` (`id`,`email`,`stripeToken`,`createdAt`,`updatedAt`,`EventId`) VALUES (DEFAULT,'mariana_pt3@hotmail.com',NULL,'2017-09-28 02:34:39','2017-09-28 02:34:39',5);
