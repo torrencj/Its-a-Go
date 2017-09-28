@@ -54,9 +54,13 @@ router.post('/new', function(req, res) {
     jwt.verify(req.cookies.cookiename.token, secret, function(err, decoded) {
       console.log("Info stored in token:");
       console.log(decoded);
-      req.body.UserUuid = decoded.user; //Make a new key in body and set it to the uuid.
+      req.body.UserUuid = decoded.user; //Make a new key in body and set it to the uuid.      
       console.log(req.body);
 
+      db.Event.create(req.body).then(function(data) {
+        res.send(data);
+      });
+      
       var newEvent = {
         eventName:'test',
         eventDate:'test',
@@ -75,6 +79,10 @@ router.post('/new', function(req, res) {
   }
 })
 
+router.post('/new', function(req, res) {
+  console.log(req.body);
+
+})
 
 // router.get('/', function(req, res) {
 //   db.Post.findAll().then(data => {
