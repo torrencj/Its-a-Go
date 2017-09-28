@@ -7,6 +7,13 @@ html {
 
 }
 
+.brand-logo{
+    margin-left: 20px;
+}
+
+.navList {
+    margin-right: 20px;
+}
 /*ABOUT STYLES*/
 .team{
     text-align: center;
@@ -30,8 +37,9 @@ font-family: 'Marmelad', sans-serif;
 
 /*Dashboard*/
 #main-row {
+    margin-top: 30px;
     padding: 20px;
-    background-color: #dce6ee;
+    background-color: #bdbdbd;
     border: 2px solid #white;
 }
 
@@ -46,6 +54,7 @@ p.flow-text{
 
 .calendar{
     color:black;
+
 }
 
 .a.collection-item{
