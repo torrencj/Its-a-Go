@@ -24,17 +24,17 @@ router.get("/all", function(req, res) {
       key: 'AIzaSyBuD0bP9XwZ9XqGr1vmeUZbeitiaw8knZY'
     });
 
-    geo.find('223 Edenbridge Dr, Toronto', function(err, loc){
+    geo.find('lot 40 austin,tx', function(err, loc){
       console.log(loc);
       // process response object
-      res.end();
-
+      // res.end();
+      console.log(req.body);
+      db.Event.create(req.body).then(function(data) {
+        res.send(data);
+      })
     });
 
-    console.log(req.body);
-    // db.Event.create(req.body).then(function(data) {
-    //   res.send(data);
-    // })
+
   })
 
 

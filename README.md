@@ -11,4 +11,4 @@ install npm packages everytime you merge from master branch
 - get stripe up to snuff, put the button where we need it.
 - Make the email HTML correct, send email on user create, and on event invites.
 - Make a participant table (will and jacque)
-- 
+- Change how cookies are checked -- IF user exists first.

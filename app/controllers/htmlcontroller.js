@@ -21,6 +21,7 @@ router.get("/login", function(req,res) {
   } else {
     res.render("login");
   }
+
 });
 
 router.get("/signup", function(req,res) {
@@ -39,7 +40,9 @@ router.get("/create", function(req,res) {
     jwt.verify(req.cookies.cookiename.token, secret, function(err, decoded) {
       console.log("Info stored in token:");
       console.log(decoded);
+
       res.render("create", decoded);
+
     });
   } else { // They aren't signed in.
     res.redirect("/")
@@ -48,6 +51,15 @@ router.get("/create", function(req,res) {
 
 router.get("/event", function(req,res) {
     res.render("event");
+});
+
+router.get("/event/:id", function(req,res) {
+  db.Event.findOne({
+  where: {
+      id: req.params.id
+    }
+  })
+  res.render("event")
 });
 
 router.get("/dashboard", function(req, res) {
@@ -60,8 +72,13 @@ router.get("/dashboard", function(req, res) {
         	uuid: decoded.user
       }
         }).then(function(results) {
-          console.log(results.dataValues);
-      res.render("dashboard", results.dataValues);
+          if (results) {
+            console.log(results.dataValues);
+            res.render("dashboard", results.dataValues);
+          } else {
+            res.render("signup");
+          }
+
       });
     });
   } else { // They aren't signed in.
