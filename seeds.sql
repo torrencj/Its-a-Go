@@ -24,27 +24,14 @@ INSERT INTO `Users` (`uuid`,`firstname`,`lastname`,`email`,`hash`,`createdAt`,`u
 INSERT INTO `Users` (`uuid`,`firstname`,`lastname`,`email`,`hash`,`createdAt`,`updatedAt`) VALUES ('bc0107d0-a3e2-11e7-916d-1b889dd9cd57','John','Torrence','torrencj@gmail.com','$2a$10$31gyK2NMTyUqWY.2A03U7.MCJKKxlR0Da1/6fPatdi6JmB6Rp89KG','2017-09-28 00:19:47','2017-09-28 00:19:47');
 INSERT INTO `Users` (`uuid`,`firstname`,`lastname`,`email`,`hash`,`createdAt`,`updatedAt`) VALUES ('e5b9b9a0-a3e2-11e7-916d-1b889dd9cd57','Mariana','Perez','mariana_pt3@hotmail.com','$2a$10$kKDs/a5Qc9ivM7pcDisLJ.uI5nAjcotn9F9xeAUS/x2ScchEfJaPO','2017-09-28 00:20:57','2017-09-28 00:20:57');
 
-INSERT INTO 
-events 
-(event, date, notes, totalCost, maxCPP, UserUuid)
-VALUES 
-("Hiking", ),
-("Hiking", ),
-("Hiking", ),
-("Hiking", ),
-("Hiking", )
-;
-
-DROP TABLE IF EXISTS `Participants`;
-DROP TABLE IF EXISTS `Events`;
-DROP TABLE IF EXISTS `Users`;
-
-DROP TABLE IF EXISTS `Users`;
-CREATE TABLE IF NOT EXISTS `Users` (`uuid` CHAR(36) BINARY , `firstname` VARCHAR(255) NOT NULL, `lastname` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL, `hash` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`uuid`)) ENGINE=InnoDB;
-
-DROP TABLE IF EXISTS `Events`;
-CREATE TABLE IF NOT EXISTS `Events` (`id` INTEGER NOT NULL auto_increment , `event` VARCHAR(255) NOT NULL, `date` VARCHAR(255) NOT NULL, `notes` VARCHAR(255), `totalCost` DECIMAL NOT NULL, `maxCPP` DECIMAL NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `UserUuid` CHAR(36) BINARY, PRIMARY KEY (`id`), FOREIGN KEY (`UserUuid`) REFERENCES `Users` (`uuid`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
-
-DROP TABLE IF EXISTS `Participants`;
-CREATE TABLE IF NOT EXISTS `Participants` (`id` INTEGER NOT NULL auto_increment , `name` VARCHAR(255) NOT NULL, `photoURL` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL, `stripeToken` VARCHAR(255) DEFAULT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `EventId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`EventId`) REFERENCES `Events` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
+-- INSERT INTO 
+-- events 
+-- (event, date, notes, totalCost, maxCPP, UserUuid)
+-- VALUES 
+-- ("Hiking", ),
+-- ("Hiking", ),
+-- ("Hiking", ),
+-- ("Hiking", ),
+-- ("Hiking", )
+-- ;
 
