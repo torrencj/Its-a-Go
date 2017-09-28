@@ -17,25 +17,25 @@ router.get("/all", function(req, res) {
   });
 
 
-  router.post('/new', function(req, res) {
-    var geocoder = require('google-geocoder');
+  // router.post('/new', function(req, res) {
+  //   var geocoder = require('google-geocoder');
 
-    var geo = geocoder({
-      key: 'AIzaSyBuD0bP9XwZ9XqGr1vmeUZbeitiaw8knZY'
-    });
+  //   var geo = geocoder({
+  //     key: 'AIzaSyBuD0bP9XwZ9XqGr1vmeUZbeitiaw8knZY'
+  //   });
 
-    geo.find('223 Edenbridge Dr, Toronto', function(err, loc){
-      console.log(loc);
-      // process response object
-      res.end();
+  //   geo.find('223 Edenbridge Dr, Toronto', function(err, loc){
+  //     console.log(loc);
+  //     // process response object
+  //     res.end();
 
-    });
+  //   });
 
-    console.log(req.body);
-    // db.Event.create(req.body).then(function(data) {
-    //   res.send(data);
-    // })
-  })
+  //   console.log(req.body);
+  //   // db.Event.create(req.body).then(function(data) {
+  //   //   res.send(data);
+  //   // })
+  // })
 
 
 // router.get("/", function(req, res) {
@@ -55,34 +55,31 @@ router.post('/new', function(req, res) {
       console.log("Info stored in token:");
       console.log(decoded);
       req.body.UserUuid = decoded.user; //Make a new key in body and set it to the uuid.      
-      console.log(req.body);
-
-      db.Event.create(req.body).then(function(data) {
-        res.send(data);
-      });
+      console.log(req.body.event);
       
       var newEvent = {
-        eventName:'test',
-        eventDate:'test',
-        eventAddress:'test',
-        eventCost:100,
-        UserUuid:decoded.user
-      }
+        event: req.body.event,
+        date: req.body.date,
+        notes:req.body.notes,
+        totalCost: req.body.totalCost,
+        maxCPP: req.body.maxCPP,
+        UserUuid: decoded.user
+      };
 
       db.Event.create(newEvent).then(function(data) {
         res.send(data);
-      })
+      });
 
     });
   } else { // They aren't signed in.
-    res.redirect("/login")
+    res.redirect("/login");
   }
-})
+});
 
-router.post('/new', function(req, res) {
-  console.log(req.body);
+// router.post('/new', function(req, res) {
+//   console.log(req.body);
 
-})
+// });
 
 // router.get('/', function(req, res) {
 //   db.Post.findAll().then(data => {

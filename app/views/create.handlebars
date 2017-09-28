@@ -8,7 +8,7 @@
         <ul class="right hide-on-med-and-down">
           {{!-- <li><a href="login">Login</a></li> --}}
           <li><a href="signout">Log Out</a></li>
-          <li><a href="dashboard">Event Dashboard</a></li>
+          <li><a href="dashboard">Dashboard</a></li>
           <li><a href="about">About</a></li>
           
         </ul>
@@ -17,7 +17,7 @@
         <ul class="side-nav" id="mobile-demo">
           <li><a href="signout">Log Out</a></li>
           {{!-- <li><a href="login">Login</a></li> --}}
-          <li><a href="dashboard">Event Dashboard</a></li>
+          <li><a href="dashboard">Dashboard</a></li>
           <li><a href="about">About</a></li>
           
       </ul>
@@ -30,7 +30,7 @@
 <div class="container">
 <div class="row teal lighten-4">
     <div class="col s12 teal accent-4">
-        <h2>Create an event:</h2>
+        <h2>Create a new event:</h2>
     <br>
     <hr>
     </div>
@@ -38,34 +38,30 @@
     <div class="col s2">
         <form action="/api/event/new" method="POST">
 
-            <label for="UserUuid">uuid</label>
+{{!--             <label for="UserUuid">uuid</label>
             <input type="text" name="UserUuid">
             <br>
+ --}}
+            <label for="event" placeholder="Folsom Street Festival">Event</label>
+            <input type="text" name="event">
+            <br>
 
-            <label for="eventName">Event Name</label>
-            <input type="text" name="eventName">
+            <label for="date" placeholder="2018-09-21">Date</label>
+            <input id="date" type="date" name="date">
             <br>
-            <label for="eventDate">Event Date</label>
-            <input type="text" name="eventDate">
+
+            <label for="notes" placeholder="Bring sunscreen!">Notes to participants</label>
+            <input type="text" name="notes">
             <br>
-            <label for="eventAddress">Event Address</label>
-            <input type="text" name="eventAddress">
+
+            <label for="totalCost" placeholder="600.00">Total Cost</label>
+            <input type="text" name="totalCost">
             <br>
-            <label for="eventCity">Event City</label>
-            <input type="text" name="eventCity">
+
+            <label for="maxCPP" placeholder="75.00">Max Cost per Person</label>
+            <input type="text" name="maxCPP">
             <br>
-            <label for="eventState">Event State</label>
-            <input type="text" name="eventState">
-            <br>
-            <label for="eventZip">Event Zip</label>
-            <input type="text" name="eventZip">
-            <br>
-            <label for="eventCost">Cost</label>
-            <input type="text" name="eventCost">
-            <br>
-            <label for="eventMinimum">Minimum # of Attendees</label>
-            <input type="text" name="eventMinimum">
-            <br>
+
             <button type="submit" >Submit</button>
         </form>
         </div>

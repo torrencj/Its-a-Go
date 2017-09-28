@@ -24,14 +24,7 @@ INSERT INTO `Users` (`uuid`,`firstname`,`lastname`,`email`,`hash`,`createdAt`,`u
 INSERT INTO `Users` (`uuid`,`firstname`,`lastname`,`email`,`hash`,`createdAt`,`updatedAt`) VALUES ('bc0107d0-a3e2-11e7-916d-1b889dd9cd57','John','Torrence','torrencj@gmail.com','$2a$10$31gyK2NMTyUqWY.2A03U7.MCJKKxlR0Da1/6fPatdi6JmB6Rp89KG','2017-09-28 00:19:47','2017-09-28 00:19:47');
 INSERT INTO `Users` (`uuid`,`firstname`,`lastname`,`email`,`hash`,`createdAt`,`updatedAt`) VALUES ('e5b9b9a0-a3e2-11e7-916d-1b889dd9cd57','Mariana','Perez','mariana_pt3@hotmail.com','$2a$10$kKDs/a5Qc9ivM7pcDisLJ.uI5nAjcotn9F9xeAUS/x2ScchEfJaPO','2017-09-28 00:20:57','2017-09-28 00:20:57');
 
--- INSERT INTO 
--- events 
--- (event, date, notes, totalCost, maxCPP, UserUuid)
--- VALUES 
--- ("Hiking", ),
--- ("Hiking", ),
--- ("Hiking", ),
--- ("Hiking", ),
--- ("Hiking", )
--- ;
-
+INSERT INTO `Events` (`id`,`event`,`date`,`notes`,`totalCost`,`maxCPP`,`createdAt`,`updatedAt`,`UserUuid`) VALUES (DEFAULT,'Folsom Street Festival','2018-09-21','Bring sunscreen!','600.00','75.00','2017-09-28 01:32:22','2017-09-28 01:32:22','0219a160-a3e2-11e7-916d-1b889dd9cd57');
+INSERT INTO `Events` (`id`,`event`,`date`,`notes`,`totalCost`,`maxCPP`,`createdAt`,`updatedAt`,`UserUuid`) VALUES (DEFAULT,'Cat Party','2017-09-27','Bring wine!','50.00','5.00','2017-09-28 01:34:10','2017-09-28 01:34:10','7eea9a50-a3e2-11e7-916d-1b889dd9cd57');
+INSERT INTO `Events` (`id`,`event`,`date`,`notes`,`totalCost`,`maxCPP`,`createdAt`,`updatedAt`,`UserUuid`) VALUES (DEFAULT,'Vegetarian BBQ','2017-09-29','No tempeh, plz!','200.00','25.00','2017-09-28 01:36:31','2017-09-28 01:36:31','bc0107d0-a3e2-11e7-916d-1b889dd9cd57');
+INSERT INTO `Events` (`id`,`event`,`date`,`notes`,`totalCost`,`maxCPP`,`createdAt`,`updatedAt`,`UserUuid`) VALUES (DEFAULT,'Party at the Millenium','2017-09-30','Pretend we live here...','150.00','40.00','2017-09-28 01:38:11','2017-09-28 01:38:11','e5b9b9a0-a3e2-11e7-916d-1b889dd9cd57');
