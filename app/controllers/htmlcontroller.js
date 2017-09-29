@@ -9,7 +9,7 @@ var cookieParser = require('cookie-parser');
 var secret = fs.readFileSync(path.join(__dirname, '../../private.pem'));
 
 router.get("/", function(req,res) {
-    res.render("splash");
+    res.render("splash",{url: 'css/img/itsago2.jpg'});
 });
 
 router.get("/login", function(req,res) {
@@ -19,19 +19,19 @@ router.get("/login", function(req,res) {
       res.redirect("/dashboard")
     });
   } else {
-    res.render("login");
+    res.render("login",{url:'css/img/itsago.jpg'});
   }
 
 });
 
-router.get("/signup", function (req, res) {
+router.get("/signup", function(req,res) {
   if (req.cookies.cookiename) {
-    jwt.verify(req.cookies.cookiename.token, secret, function (err, decoded) {
+    jwt.verify(req.cookies.cookiename.token, secret, function(err, decoded) {
       if (err) throw err;
-      res.redirect("/dashboard" ,Object.assign(results.dataValues, {url: 'css/img/itsago.jpg'}))
+      res.redirect("/dashboard")
     });
   } else {
-    res.render();
+    res.render("signup", {url: 'css/img/itsago.jpg'});
   }
 });
 
@@ -59,7 +59,7 @@ router.get("/event/:id", function(req,res) {
       id: req.params.id
     }
   })
-  res.render("event")
+  res.render("event",{url: 'css/img/itsago3.jpg'})
 });
 
 router.get("/dashboard", function(req, res) {
@@ -74,7 +74,7 @@ router.get("/dashboard", function(req, res) {
         }).then(function(results) {
           if (results) {
             console.log(results.dataValues);
-            res.render("dashboard", results.dataValues);
+            res.render("dashboard", results.dataValues );
           } else {
             res.render("signup");
           }
@@ -87,7 +87,7 @@ router.get("/dashboard", function(req, res) {
 });
 
 router.get("/about", function(req,res) {
-    res.render("about");
+    res.render("about", {url:'css/img/itsago5.jpg'});
 });
 
 router.get("/stripetest", function (req, res) {
@@ -96,7 +96,7 @@ router.get("/stripetest", function (req, res) {
 
 router.get("/signout", function (req, res) {
   res.clearCookie("cookiename");
-  res.render("splash")
+  res.render("splash", {url: 'css/img/itsago2.jpg'})
 })
 
 
