@@ -44,7 +44,7 @@ app.use(cookieParser())
 app.use(methodOverride("_method"));
 
 // Static directory
-app.use(express.static(path.join(__dirname, "app/public")));
+app.use(express.static(path.join(__dirname, "app/public/")));
 
 // Set Handlebars
 var exphbs = require("express-handlebars");

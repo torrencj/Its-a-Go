@@ -57,7 +57,6 @@ router.get("/addGuests", function(req,res) {
       console.log("Info stored in token:");
       console.log(decoded);
       res.render("addGuests", decoded);
-      //LOGIC!!!
     });
   } else { // They aren't signed in.
     res.redirect("/")
@@ -65,35 +64,12 @@ router.get("/addGuests", function(req,res) {
 });
 
 
-router.get("/event", function(req,res) {
-    res.render("event");
-});
 
-// router.get("/event/:id", function(req,res) {
-//   db.Event.findOne({
-//   where: {
-//       id: req.params.id
-//     }
-//   })
-//   res.render("event")
+// router.get("/:id", function(req,res) {
+//     res.render("event");
 // });
 
-//NOT protected.
-router.get("/event/:eventId", function(req, res) {
-  console.log(req.params.eventId);
-  db.Event.findOne({
-    where: {
-      id: req.params.eventId
-    }
-  }).then(function(eventData) {
-    console.log(eventData);
-    if (eventData) {
-      res.render("event");
-    } else {
-      res.send("Nuthin here.")
-    }
-  })
-});
+
 
 router.get("/dashboard", function(req, res) {
   if (req.cookies.cookiename) {
@@ -132,6 +108,26 @@ router.get("/signout", function (req, res) {
   res.render("splash")
 })
 
+//NOT protected.
+router.get("/:eventId", function(req, res) {
+  console.log(req.params.eventId);
+  db.Event.findOne({
+    where: {
+      id: req.params.eventId
+    }
+  }).then(function(eventData) {
+    console.log(eventData.dataValues);
+    if (eventData) {
+      res.render("event", eventData.dataValues);
+    } else {
+      res.send("Nuthin here.")
+    }
+  })
+});
+
+router.get("/event", function(req,res) {
+    res.render("event");
+});
 
 // router.get("/all", function(req, res) {
 //   db.Event.findAll({}).then(function(results) {

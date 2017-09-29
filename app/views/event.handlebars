@@ -1,5 +1,18 @@
-
-
+<!--
+<head>
+  <meta charset="utf-8">
+  <title>itsaGO</title>
+{{!-- here we have the icon on the web browser --}}
+<link href="./css/img/favicon.ico" rel="icon"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="./css/materialize.min.css" media="screen,projection"/>
+<link rel="stylesheet" href="./css/master.css">
+<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Bevan|Fjalla+One|Ultra|Zilla+Slab+Highlight" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Marcellus+SC" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Marmelad" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Bevan|Fjalla+One|Ultra|Zilla+Slab+Highlight" rel="stylesheet">
+<link rel="stylesheet" href="/public/css/test.css">
+</head> -->
 <!-- NAVBAR -->
 <!--
 <div class="mainContainer">
@@ -22,37 +35,25 @@
 
 <!-- END NAVBAR -->
 
-<!-- {"id":1,
-"eventName":"Something",
-"date":"2017-12-12",
-"notes":"Bring a towel.",
-"totalCost":"40",
-"maxCPP":"4",
-"createdAt":"2017-09-28T22:55:50.000Z",
-"updatedAt":"2017-09-28T22:55:50.000Z",
-"UserUuid":"1eab39b0-a4a0-11e7-be20-37ea83ccec90"} -->
-
 <div class="container"> <!-- main container -->
 <div class="row fig">
     <div class="col s8">
-      <h3>(this.eventname) {{{this.eventName}}}</h3><br>
+      <h3>{{this.eventName}}</h3>
+        <p> Date: {{this.date}}</p>
+        <p> Cost: {{this.totalCost}}</p>
+        <p> Cost per person: {{this.maxCPP}}</p>
+        <p> Notes: {{this.notes}}</p>
 
-        <p> (this.date) {{this.date}}</p><br>
-        <p> (this.totalcost) {{this.totalcost}}</p>
-        <p> (this.currentcostpp) {{this.currentcostpp}}</p><br>
-
-        <p> (this.notes) {{this.notes}}</p>
-
-</div>
+<!-- </div>
     <div class="col s4 map">
       <h4 id="upcoming"><strong>Total People to Go! <strong> </span></h4>
       <p> Current Count: (this.currentCount) {{this.currentCount}}</p>
       <p> Total Count Needed: (this.finalCount){{this.finalCount}}</p>
     </div>
-</div>
+</div> -->
 
 
-<div class="row newton">
+<!-- <div class="row newton">
 <div class="col s12">
   <div class="row innernewton">
   <div class="col s10">
@@ -61,12 +62,13 @@
   </div>
   </div>
 </div>
-</div>
+</div> -->
 
 </div>
+
 
 {{!--   SIDE NAV --}}
-  <ul id="slide-out" class="side-nav">
+  <!-- <ul id="slide-out" class="side-nav">
     <li><div class="user-view">
     </div></li>
     <li><a href="signout">Sign Out</a></li>
@@ -74,4 +76,4 @@
     <li><a href="/">Home</a></li>
   </ul>
     <li><a href= "https://github.com/marianapt/Project2" target="_blank"><img src="images/github.png" alt="GitHub" width=40 height=40</a></li>
-  </ul>
+  </ul> -->
