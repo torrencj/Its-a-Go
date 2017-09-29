@@ -1,10 +1,10 @@
 html {
-    background: url("./img/itsago2.jpg") no-repeat center center fixed;
+    /* background: url("./img/itsago2.jpg") no-repeat center center fixed; */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-
+    background-repeat: no-repeat;
 }
 
 /*ABOUT STYLES*/
@@ -32,7 +32,7 @@ font-family: 'Marmelad', sans-serif;
 #main-row {
     padding: 20px;
     background-color: #dce6ee;
-    border: 2px solid #white;
+    border: 2px solid white;
 }
 
  #eventDiv {

@@ -24,14 +24,14 @@ router.get("/login", function(req,res) {
 
 });
 
-router.get("/signup", function(req,res) {
+router.get("/signup", function (req, res) {
   if (req.cookies.cookiename) {
-    jwt.verify(req.cookies.cookiename.token, secret, function(err, decoded) {
+    jwt.verify(req.cookies.cookiename.token, secret, function (err, decoded) {
       if (err) throw err;
-      res.redirect("/dashboard")
+      res.redirect("/dashboard" ,Object.assign(results.dataValues, {url: 'css/img/itsago.jpg'}))
     });
   } else {
-    res.render("signup");
+    res.render();
   }
 });
 
