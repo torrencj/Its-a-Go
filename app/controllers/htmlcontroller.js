@@ -122,9 +122,7 @@ router.get("/:eventId", function(req, res) {
       id: req.params.eventId
     }
   }).then(function(eventData) {
-    console.log(eventData.dataValues);
     if (eventData) {
-      // eventData.dataValues.url = 'css/img/itsago2.jpg';
       res.render("event", eventData.dataValues);
     } else {
       res.send("Nuthin here.")
