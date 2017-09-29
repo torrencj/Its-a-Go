@@ -67,24 +67,15 @@ router.get("/addGuests", function(req,res) {
   }
 });
 
-<<<<<<< HEAD
 
-
-// router.get("/:id", function(req,res) {
-//     res.render("event");
+// router.get("/event/:id", function(req,res) {
+//   db.Event.findOne({
+//   where: {
+//       id: req.params.id
+//     }
+//   })
+//   res.render("event",{url: 'css/img/itsago3.jpg'})
 // });
-
-
-=======
-router.get("/event/:id", function(req,res) {
-  db.Event.findOne({
-  where: {
-      id: req.params.id
-    }
-  })
-  res.render("event",{url: 'css/img/itsago3.jpg'})
-});
->>>>>>> master
 
 router.get("/dashboard", function(req, res) {
   if (req.cookies.cookiename) {
