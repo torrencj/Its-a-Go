@@ -9,7 +9,11 @@ var cookieParser = require('cookie-parser');
 var secret = fs.readFileSync(path.join(__dirname, '../../private.pem'));
 
 router.get("/", function(req,res) {
-    res.render("splash");
+  var results = {
+    dataValues: {}
+  }
+    // res.render("splash");
+  res.render("splash", Object.assign(results.dataValues, {url: 'css/img/itsago.jpg'}))
 });
 
 router.get("/login", function(req,res) {
