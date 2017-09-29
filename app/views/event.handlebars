@@ -43,7 +43,15 @@
         <p> Cost: {{this.totalCost}}</p>
         <p> Cost per person: {{this.maxCPP}}</p>
         <p> Notes: {{this.notes}}</p>
-
+        <br>
+        <div class="">
+          <h4>Guests:</h4>
+          <p>John</p>
+          <p>Jacque</p>
+          <p>Will</p>
+          <p>Jayme</p>
+          <p>Mariana</p>
+        </div>
 <!-- </div>
     <div class="col s4 map">
       <h4 id="upcoming"><strong>Total People to Go! <strong> </span></h4>
@@ -64,6 +72,22 @@
 </div>
 </div> -->
 
+
+
+
+</div>
+<div class="col s2">
+  <form action="/api/user/savecc" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_MfMLV8cfYDwI9mWNH5qi0tya"
+    data-amount="{{this.maxCPP}}"
+    data-name="It's a Go"
+    data-description="{{this.eventName}}"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="auto">
+  </script>
+  </form>
 </div>
 
 

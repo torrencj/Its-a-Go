@@ -13,7 +13,7 @@ router.get("/", function(req,res) {
     dataValues: {}
   }
     // res.render("splash");
-  res.render("splash", Object.assign(results.dataValues, {url: 'css/img/itsago.jpg'}))
+  res.render("splash", Object.assign(results.dataValues, {url: 'css/img/itsago2.jpg'}))
 });
 
 router.get("/login", function(req,res) {
@@ -124,6 +124,7 @@ router.get("/:eventId", function(req, res) {
   }).then(function(eventData) {
     console.log(eventData.dataValues);
     if (eventData) {
+      // eventData.dataValues.url = 'css/img/itsago2.jpg';
       res.render("event", eventData.dataValues);
     } else {
       res.send("Nuthin here.")
