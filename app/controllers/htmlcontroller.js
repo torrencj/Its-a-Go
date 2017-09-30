@@ -74,7 +74,7 @@ router.get("/dashboard", function(req, res) {
         }).then(function(results) {
           if (results) {
             console.log(results.dataValues);
-            res.render("dashboard", results.dataValues );
+            res.render("dashboard", results.dataValues);
           } else {
             res.render("signup");
           }
